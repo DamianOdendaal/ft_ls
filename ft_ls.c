@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <sys/types.h>
 #include <dirent.h>
-/* #include "libft/libft.h" */
 #include <stdio.h>
 
 
@@ -18,8 +17,8 @@ int main (int argc, char *argv[])
 		exit(1);
 	}
 
-	while (sd=readdir(dir) != NULL)
-		printf(">>%s\n", sd->d_name);
+	while ((sd = readdir(dir)) != NULL)
+		printf("->%s\n", sd->d_name);
 	closedir(dir);
 	return(0);
 }
