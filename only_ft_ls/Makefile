@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbaloyi <mbaloyi@student.42.fr>            +#+  +:+       +#+         #
+#    By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/05/18 17:20:48 by mbaloyi           #+#    #+#              #
-#    Updated: 2019/07/17 11:37:04 by dodendaa         ###   ########.fr        #
+#    Created: 2019/07/17 13:32:48 by dodendaa          #+#    #+#              #
+#    Updated: 2019/07/17 13:32:50 by dodendaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 LIBFT = ../libft/libft.a
 CC = gcc
