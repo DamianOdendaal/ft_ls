@@ -78,17 +78,19 @@ void	check_flags(char *s, t_ls_flags *flg)
 
 /*  int main (int argc, char **argv)
 {
+	t_ls_flags *flags;
 	if (argc < 2)
 	{
 		if (argc == 1)
 		{
 			//you need to list what ever is in the current dir, because there are no arguments that have followed my ls
+			currdir()
 		}
 		else
 		{
-			// execute the ls commands that you have written
+			check_flags(argv[1], flags);
 		}
-		// implement your argv with your functions that you have created 
+		//parse valuse to your flags once you know they are actually flags  
 		return (0);
 	}
 } 

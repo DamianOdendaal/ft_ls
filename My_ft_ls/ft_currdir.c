@@ -13,7 +13,7 @@
 
 #include "ft_ls.h"
 
-int currdir()// fix parameters of yout current dir function
+int currdir(char **str, t_ls_flags *flag)// fix parameters of yout current dir function
 {
 
     DIR *curdir;
