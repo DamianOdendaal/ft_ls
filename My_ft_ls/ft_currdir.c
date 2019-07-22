@@ -6,19 +6,20 @@
 /*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:33:01 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/17 14:30:10 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/07/22 10:29:36 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "ft_ls.h"
 
-int main(){
+int currdir (int argc, char **argv)
+{
 
-    DIR *mydir;
+    DIR *curdir;
     struct dirent *files;
 
-    mydir = opendir(".");
+    curdir = opendir(".");
 
     while ((files = readdir(mydir)) != NULL)
     {
@@ -29,5 +30,5 @@ int main(){
         }
     }
     closedir(mydir);
-    return 0;
+    return (1);
 }

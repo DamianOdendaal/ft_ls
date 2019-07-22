@@ -6,7 +6,7 @@
 /*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:30:51 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/17 13:30:53 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/07/22 10:26:18 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <errno.h>
 #include "../libft/libft.h"
 
+
+
 typedef	struct		s_file
 {
 	char			*attributes;
@@ -42,6 +44,7 @@ typedef	struct		s_file
 	struct s_file	*next;
 	struct s_file	*previous;
 }					t_file;
+
 typedef struct	s_dir
 {
 	char	*dirname;
