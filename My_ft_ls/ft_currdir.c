@@ -13,15 +13,19 @@
 
 #include "ft_ls.h"
 
-int currdir (int argc, char **argv)
+int currdir()// fix parameters of yout current dir function
 {
 
     DIR *curdir;
     struct dirent *files;
 
     curdir = opendir(".");
-
-    while ((files = readdir(mydir)) != NULL)
+    if (!curdir)
+    {
+        perror(EXIT_FAILURE);
+        exit(1);
+    }
+    while ((files = readdir(curdir)) != NULL)
     {
         if(files->d_name[0] != '.')
 		{
@@ -29,6 +33,6 @@ int currdir (int argc, char **argv)
             ft_putchar('\t');
         }
     }
-    closedir(mydir);
+    closedir(curdir);
     return (1);
 }

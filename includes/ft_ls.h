@@ -25,25 +25,7 @@
 # include <errno.h>
 #include "../libft/libft.h"
 
-
-
-typedef	struct		s_file
-{
-	char			*attributes;
-	char			*file_name;
-	unsigned int	links;
-	long			blocks;
-	char			*userid;
-	char			*groupid;
-	int				size;
-	time_t			rawtime;
-	char			*day;
-	char			*month;
-	char			*year;
-	char			*time;
-	struct s_file	*next;
-	struct s_file	*previous;
-}					t_file;
+int currdir(int argc, char **argv);
 
 typedef struct	s_dir
 {
