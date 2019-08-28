@@ -15,6 +15,7 @@
 # define FT_LS_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include <string.h>
 # include <dirent.h>
 # include <sys/stat.h>
@@ -25,7 +26,7 @@
 # include <errno.h>
 #include "../libft/libft.h"
 
-int currdir(int argc, char **argv);
+void currdir();
 
 typedef struct	s_dir
 {

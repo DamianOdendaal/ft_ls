@@ -15,12 +15,12 @@
 int main(int ac, char **av)
 {
 	if (ac == 1)
-		do current dir function
-	if (ac < 1)
-	{
-		create a function to list first check what is being passed, a file or a dir
+		currdir();
+	// if (ac < 1)
+	// {
+	// 	create a function to list first check what is being passed, a file or a dir
 		
-		once you have that then you can create a function that lists what is in a spcecific dir 
-	}
+	// 	once you have that then you can create a function that lists what is in a spcecific dir 
+	// }
 	return (0);
 }

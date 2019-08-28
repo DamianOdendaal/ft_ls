@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 
-#include "ft_ls.h"
+#include "../includes/ft_ls.h"
 
-int currdir()
+void currdir()
 {
 
     DIR *curdir;
@@ -22,7 +22,7 @@ int currdir()
     curdir = opendir(".");
     if (!curdir)
     {
-        perror(EXIT_FAILURE);
+        ft_putstr("No such directory");
         exit(1);
     }
     while ((files = readdir(curdir)) != NULL)
@@ -31,8 +31,7 @@ int currdir()
 		{
             ft_putstr(files->d_name);
             ft_putchar('\t');
-        }
+       }
     }
     closedir(curdir);
-    return (1);
 }
