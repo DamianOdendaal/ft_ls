@@ -33,4 +33,13 @@ typedef struct	s_dir
 	struct s_dir	*next;
 }	t_dir;
 
+typedef	struct s_ls_flags
+	{
+		int f_a;
+		int f_l;
+		int f_r;
+		int f_R;
+		int f_t;
+	} t_ls_flags;
+
 #endif
