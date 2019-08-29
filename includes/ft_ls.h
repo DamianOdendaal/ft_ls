@@ -24,9 +24,7 @@
 # include <pwd.h>
 # include <time.h>
 # include <errno.h>
-#include "../libft/libft.h"
-
-void currdir();
+# include "../libft/libft.h"
 
 typedef struct	s_dir
 {
@@ -35,12 +33,20 @@ typedef struct	s_dir
 }	t_dir;
 
 typedef	struct s_ls_flags
-	{
-		int f_a;
-		int f_l;
-		int f_r;
-		int f_R;
-		int f_t;
-	} t_ls_flags;
+{
+	int f_a;
+	int f_l;
+	int f_r;
+	int f_R;
+	int f_time;
+}		t_ls_flags;
+
+
+void	currdir();
+void	print_hidden();
+void	flag_activate(char c, t_ls_flags **fs);
+void	init_flags(t_ls_flags *flags);
+void	check_flags(char **s, t_ls_flags *flg);
+
 
 #endif

@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printhidden.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/22 10:19:04 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/22 13:30:48 by dodendaa         ###   ########.fr       */
+/*   Created: 2019/08/29 13:05:35 by dodendaa          #+#    #+#             */
+/*   Updated: 2019/08/29 13:05:37 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-int main(int ac, char **av)
+void print_hidden()
 {
-	int i;
-	int index;
-	t_ls_flags	*flag;
 
-	i = 0;
-	index = 0;
-	if (ac == 1)
-		currdir();
-	while (++i < ac)
-		check_flags(av, flag);
-	// if (ac < 1)
-	// {
-	// 	create a function to list first check what is being passed, a file or a dir
-		
-	// 	once you have that then you can create a function that lists what is in a spcecific dir 
-	// }
-	return (0);
+    DIR *curdir;
+    struct dirent *files;
+
+    curdir = opendir(".");
+    if (!curdir)
+    {
+        ft_putstr("No such directory");
+        exit(1);
+    }
+    while ((files = readdir(curdir)) != NULL)
+    {
+        ft_putstr(files->d_name);
+        ft_putchar('\t');
+    }
+    closedir(curdir);
 }
