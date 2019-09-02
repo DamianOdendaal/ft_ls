@@ -27,7 +27,11 @@ void	init_flags(t_ls_flags *flags)
 void	flag_activate(char c, t_ls_flags **fs)
 {
 	if (c == 'a')
-		(*fs)->f_a = (int)ft_strdup("a flag active");
+	{
+		(*fs)->f_a = 1;
+		ft_putstr("flag active");
+	}
+		
 	if (c == 'l')
 		(*fs)->f_l = 1;
 	if (c == 'r')
@@ -47,20 +51,20 @@ void	check_flags(char **s, t_ls_flags *flg)
 
 	i = 1;
 	j = 0;
-	index = 0;
-	s2 = "Rlart";
+	index = 1;
+	s2 = "artRl";
 	while(s[i][index])
 	{
 		if (s[i][0] == '-')
 		{
-			while(s2[++j])
+			while(s2[j] != '\0')
 			{
-				if (s[i][index] == s2[j])
+				if (s[i][index++] == s2[j])
 				{
 					flag_activate(s[i][index],&flg);
 					break;
 				}
-				j = -1;
+				j++;
 			}
 		}
 		index++;

@@ -22,7 +22,7 @@ int main(int ac, char **av)
 	index = 0;
 	if (ac == 1)
 		currdir();
-	while (++i < ac)
+	if (ac > 1)
 		check_flags(av, flag);
 	// if (ac < 1)
 	// {
