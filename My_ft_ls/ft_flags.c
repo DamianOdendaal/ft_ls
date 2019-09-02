@@ -26,6 +26,8 @@ void	flag_activate(char c, t_flags *flags)
 		*flags |= f_R;
 	else if (c == 't')
 		*flags |= f_t;
+	else if (c == '1')
+		*flags |= f_1;
 	else if (c == 'X')
 		*flags = (*flags & ~(f_a + f_t)) | (f_R);
 	else
@@ -66,6 +68,6 @@ int	check_flags(char **argv, t_flags *flags)
 		}
 		i++;
 	}
-	ft_print_bits(*flags);
+	//ft_print_bits(*flags);
 	return (i);
 }

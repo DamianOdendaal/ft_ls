@@ -41,7 +41,8 @@ typedef	enum e_flags
 	f_l = 2,
 	f_r = 4,
 	f_R = 8,
-	f_t = 16, 
+	f_t = 16,
+	f_1 = 32, 
 }		t_flags;
 
 
@@ -49,9 +50,11 @@ void	currdir(t_flags *flags);
 void	print_hidden();
 void	flag_activate(char c, t_flags *flags);
 void	init_flags(t_flags *flags);
-int	check_flags(char **s, t_flags *flags);
-
+int		check_flags(char **s, t_flags *flags);
+void	long_print(int argc, char **argv);
+void	dash1(t_flags *flags);
 void	ft_print_bits(int c);
+int 	isFile(const char* name);
 
 
 #endif

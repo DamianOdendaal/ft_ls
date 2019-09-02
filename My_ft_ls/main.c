@@ -37,8 +37,8 @@ int main(int ac, char **av)
 	t_flags	flags;
 
 	flags = 0;
-	ft_print_bits(flags);
-	ft_putendl("");
+	//ft_print_bits(flags);
+	//ft_putendl("");
 
 
 	i = 0;
@@ -47,12 +47,68 @@ int main(int ac, char **av)
 		currdir(&flags);
 	if (ac > 1)
 		i = check_flags(av, &flags);
-	ft_putendl("");
+	//ft_putendl("");
 	if (!av[i])
 		currdir(&flags);
-
- 	ft_print_bits(flags);
+ 	//ft_print_bits(flags);
 	ft_putendl("");
+	if (flags & f_a)
+	{
+		ft_putstr("flag a is set");
+		ft_putendl("");
+	}
+	if (flags & f_l)
+	{
+		// ft_putstr("flag l is set");
+		long_print(ac, av);
+		ft_putendl("");
+	}
+	if (flags & f_r)
+	{
+		ft_putstr("flag r is set");
+		ft_putendl("");
+	}
+	if (flags & f_R)
+	{
+		ft_putstr("flag R is set");
+		ft_putendl("");
+	}
+	if (flags & f_t)
+	{
+		ft_putstr("flag t is set");
+		ft_putendl("");
+	}
+	if (flags & f_1)
+	{
+		dash1(&flags);
+		ft_putendl("");
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	// parsing:
@@ -124,61 +180,5 @@ int main(int ac, char **av)
 
 	// if (S_IFDIR(s_stat))
 	// 	// file is a dir
-
-	
-
-
-
-
-
-
-
-
-	if (flags & f_a)
-	{
-		ft_putstr("flag a is set");
-		ft_putendl("");
-	}
-	if (flags & f_l)
-	{
-		ft_putstr("flag l is set");
-		ft_putendl("");
-	}
-	if (flags & f_r)
-	{
-		ft_putstr("flag r is set");
-		ft_putendl("");
-	}
-	if (flags & f_R)
-	{
-		ft_putstr("flag R is set");
-		ft_putendl("");
-	}
-	if (flags & f_t)
-	{
-		ft_putstr("flag t is set");
-		ft_putendl("");
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// if (ac < 1)
-	// {
-	// 	create a function to list first check what is being passed, a file or a dir
-		
-	// 	once you have that then you can create a function that lists what is in a spcecific dir 
-	// }
 	return (0);
 }
