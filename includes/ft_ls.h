@@ -26,27 +26,37 @@
 # include <errno.h>
 # include "../libft/libft.h"
 
+//# define FLAG_a 1
+//# define FLAG_l 2
+//# define FLAG_r 3
+//# define FLAG_R 4
+//# define FLAG_t 8
+
 typedef struct	s_dir
 {
 	char	*dirname;
 	struct s_dir	*next;
 }	t_dir;
 
-typedef	struct s_ls_flags
+
+typedef	enum e_flags
 {
-	int f_a;
-	int f_l;
-	int f_r;
-	int f_R;
-	int f_time;
-}		t_ls_flags;
+	f_0 = 0,
+	f_a = 1,
+	f_l = 2,
+	f_r = 4,
+	f_R = 8,
+	f_t = 16, 
+}		t_flags;
 
 
-void	currdir();
+void	currdir(t_flags *flags);
 void	print_hidden();
-void	flag_activate(char c, t_ls_flags **fs);
-void	init_flags(t_ls_flags *flags);
-void	check_flags(char **s, t_ls_flags *flg);
+void	flag_activate(char c, t_flags *flags);
+void	init_flags(t_flags *flags);
+int	check_flags(char **s, t_flags *flags);
+
+void	ft_print_bits(int c);
 
 
 #endif

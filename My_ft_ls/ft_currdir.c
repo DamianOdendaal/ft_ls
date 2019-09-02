@@ -13,7 +13,7 @@
 
 #include "../includes/ft_ls.h"
 
-void currdir()
+void currdir(t_flags *flags)
 {
 
     DIR *curdir;
@@ -27,7 +27,9 @@ void currdir()
     }
     while ((files = readdir(curdir)) != NULL)
     {
-        if(files->d_name[0] != '.')
+        if (!(*flags & f_a) && files->d_name[0] == '.')
+            continue;
+        else
 		{
             ft_putstr(files->d_name);
             ft_putchar('\t');

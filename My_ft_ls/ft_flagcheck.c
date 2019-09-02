@@ -1,0 +1,1 @@
+void    ft_flags(char *str, )

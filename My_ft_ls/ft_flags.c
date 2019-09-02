@@ -14,35 +14,45 @@
 #include "../includes/ft_ls.h"
 
 
-void	init_flags(t_ls_flags *flags)
-{
-	flags->f_R = 0;
-	flags->f_r = 0;
-	flags->f_time = 0;
-	flags->f_l = 0;
-	flags->f_a = 0;
+// void	init_flags(t_ls_flags *flags)
+// {
+	// flags->f_R = 0;
+	// flags->f_r = 0;~
+	// flags->f_time = 0;
+	// flags->f_l = 0;
+	// flags->f_a = 0;
+// 
+// }
 
-}
-
-void	flag_activate(char c, t_ls_flags **fs)
+void	flag_activate(char c, t_flags *flags)
 {
 	if (c == 'a')
+		*flags |= f_a;
+	else if (c == 'l')
+		*flags |= f_l;
+	else if (c == 'r')
+		*flags |= f_r;
+	else if (c == 'R')
+		*flags |= f_R;
+	else if (c == 't')
+		*flags |= f_t;
+	else if (c == 'X')
+		*flags = (*flags & ~(f_a + f_t)) | (f_R);
+	else
 	{
-		(*fs)->f_a = 1;
-		ft_putstr("flag active");
+		ft_putstr("ls: illegal option -- ");
+		ft_putchar(c);
+		ft_putendl("");
 	}
-		
-	if (c == 'l')
-		(*fs)->f_l = 1;
-	if (c == 'r')
-		(*fs)->f_r = 1;
-	if (c == 'R')
-		(*fs)->f_R = 1;
-	if (c == 't')
-		(*fs)->f_time = 1;
 }
 
-void	check_flags(char **s, t_ls_flags *flg)
+// 00000000 00000000 00000000 00000011 flags
+// 11111111 11111111 11111111 11111110 & ~(F_1) -> (SUM OF OFFS)
+// 00000000 00000000 10000000 00000010 flags
+// 00000000 00000000 00000100 00100000 | (SUMS OF ONS)
+// 00000000 00000000 10000100 00100010 flags
+
+int	check_flags(char **argv, t_flags *flags)
 {
 	char *s2;
 	int i;
@@ -51,23 +61,27 @@ void	check_flags(char **s, t_ls_flags *flg)
 
 	i = 1;
 	j = 0;
-	index = 1;
-	s2 = "artRl";
-	while(s[i][index])
+	//s2 = "artRl";
+
+	while(argv[i])
 	{
-		if (s[i][0] == '-')
+		if (argv[i][0] == '-')
 		{
-			while(s2[j] != '\0')
+			j = 1;
+			if (argv[i][j] == '-')
+				return (i + 1);
+			else
 			{
-				if (s[i][index++] == s2[j])
-				{
-					flag_activate(s[i][index],&flg);
-					break;
-				}
-				j++;
+				while(argv[i][j])
+					flag_activate(argv[i][j++], flags);
 			}
 		}
-		index++;
 		i++;
 	}
+	ft_print_bits(*flags);
+	return (i);
 }
+//		if (ft_strchr(s2, s2[j]))
+	//		{
+	//			break;
+	//		}
