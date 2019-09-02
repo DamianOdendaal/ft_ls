@@ -14,16 +14,6 @@
 #include "../includes/ft_ls.h"
 
 
-// void	init_flags(t_ls_flags *flags)
-// {
-	// flags->f_R = 0;
-	// flags->f_r = 0;~
-	// flags->f_time = 0;
-	// flags->f_l = 0;
-	// flags->f_a = 0;
-// 
-// }
-
 void	flag_activate(char c, t_flags *flags)
 {
 	if (c == 'a')
@@ -61,8 +51,6 @@ int	check_flags(char **argv, t_flags *flags)
 
 	i = 1;
 	j = 0;
-	//s2 = "artRl";
-
 	while(argv[i])
 	{
 		if (argv[i][0] == '-')
@@ -81,7 +69,3 @@ int	check_flags(char **argv, t_flags *flags)
 	ft_print_bits(*flags);
 	return (i);
 }
-//		if (ft_strchr(s2, s2[j]))
-	//		{
-	//			break;
-	//		}

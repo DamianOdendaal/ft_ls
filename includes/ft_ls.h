@@ -26,11 +26,6 @@
 # include <errno.h>
 # include "../libft/libft.h"
 
-//# define FLAG_a 1
-//# define FLAG_l 2
-//# define FLAG_r 3
-//# define FLAG_R 4
-//# define FLAG_t 8
 
 typedef struct	s_dir
 {

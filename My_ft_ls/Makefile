@@ -14,7 +14,7 @@
 LIBFT = ../libft/libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = ft
+SRCS = ft_currdir.c ft_flags.c
 
 OBJS = $(SRCS:.c=.o)
 
