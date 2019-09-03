@@ -46,9 +46,7 @@ void	flag_activate(char c, t_flags *flags)
 
 int	check_flags(char **argv, t_flags *flags)
 {
-	char *s2;
 	int i;
-	int index;
 	int j;
 
 	i = 1;
@@ -68,6 +66,6 @@ int	check_flags(char **argv, t_flags *flags)
 		}
 		i++;
 	}
-	//ft_print_bits(*flags);
+	ft_print_bits(*flags);
 	return (i);
 }

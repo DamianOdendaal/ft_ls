@@ -24,7 +24,8 @@
 # include <pwd.h>
 # include <time.h>
 # include <errno.h>
-# include "../libft/libft.h"
+// # include "../libft/libft.h"
+# include "libft.h"
 
 
 typedef struct	s_dir
@@ -51,10 +52,11 @@ void	print_hidden();
 void	flag_activate(char c, t_flags *flags);
 void	init_flags(t_flags *flags);
 int		check_flags(char **s, t_flags *flags);
-void	long_print(int argc, char **argv);
+void	long_print(void); //change back to take in arguments
 void	dash1(t_flags *flags);
 void	ft_print_bits(int c);
-int 	isFile(const char* name);
+t_bool 	isFile(const char* name);
+int 	ft_ls(int ac, char **av);
 
 
 #endif

@@ -1,14 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/22 10:19:04 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/22 13:30:48 by dodendaa         ###   ########.fr       */
+/*   Created: 2019/09/03 12:54:04 by dodendaa          #+#    #+#             */
+/*   Updated: 2019/09/03 12:54:07 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../includes/ft_ls.h"
 
@@ -30,15 +31,15 @@ void	ft_print_bits(int c)
 
 
 
-int main(int ac, char **av)
+int ft_ls(int ac, char **av)
 {
 	int i;
 	int index;
 	t_flags	flags;
 
 	flags = 0;
-	// ft_print_bits(flags);
-	// ft_putendl("");
+	ft_print_bits(flags);
+	ft_putendl("");
 
 
 	i = 0;
@@ -47,7 +48,7 @@ int main(int ac, char **av)
 		currdir(&flags);
 	if (ac > 1)
 		i = check_flags(av, &flags);
-	// ft_putendl("");
+	ft_putendl("");
 	if (!av[i])
 		currdir(&flags);
  	// ft_print_bits(flags);
@@ -60,7 +61,7 @@ int main(int ac, char **av)
 	if (flags & f_l)
 	{
 		// ft_putstr("flag l is set");
-		long_print(ac, av);
+		long_print();
 		ft_putendl("");
 	}
 	if (flags & f_r)

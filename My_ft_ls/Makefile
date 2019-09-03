@@ -11,28 +11,69 @@
 # **************************************************************************** #
 
 
-LIBFT = ../libft/libft.a
+# CFLAGS = -Wall -Werror -Wextra -I.
+
+# NAME = a.out
+
+# LIBFT = make -C libft re
+
+# SRCS = ft_check_dirs.c ft_currdir.c ft_dash1.c ft_errors.c ft_flags.c\
+# 		ft_long_print.c ft_ls.c libft/libft.a
+
+
+# OBJS = $(SRCS:.c=.o)
+
+# all: $(NAME)
+
+# $(NAME):
+# 	gcc $(CFLAGS) $(SRCS)
+# 	ar rc $(NAME) $(OBJS)
+# 	ranlib $(NAME)
+
+# clean:
+# 	rm -f $(OBJS)
+
+# fclean: clean
+# 	rm -f $(NAME)
+
+# re: fclean all
+
+# .PHONY: all, re, fclean, clean
+
+
+NAME = ft_ls
+DEPS = libft.a
+LIBFT_DIR = libft
+INCLUDES = $(LIBFT_DIR)/includes
+REL_DEPS = $(DEPS:%=$(LIBFT_DIR)/%)
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRCS = ft_currdir.c ft_flags.c
+CFLAGS = -Wall -Wextra -Werror -I $(INCLUDES) -I . -Ofast
+CFILES = ft_check_dirs.c ft_currdir.c ft_dash1.c ft_errors.c ft_flags.c\
+		ft_long_print.c ft_ls.c\
 
-OBJS = $(SRCS:.c=.o)
+OBJ = $(CFILES:%.c=build/%.o)
 
+$(NAME): $(OBJ) $(REL_DEPS)
+	@gcc $(CFLAGS) $(OBJ) $(REL_DEPS) -o $(NAME)
 
-all:
-	@make -C ../libft all
-	@$(CC) ft_ls.c -o ft_ls $(LIBFT)
+$(REL_DEPS):
+	@make -C $(dir $@)
 
-recom :
-	@$(CC) ft_ls.c -o ft_ls $(LIBFT)
+build/%.o: %.c
+	@mkdir -p build
+	@$(CC) -c $(CFLAGS) $< -o $@
 
-clean:
-	@make -C ../libft clean
-	@rm -rf $(OBJS)
+all: $(NAME);
 
-fclean : clean
-	@make -C ../libft fclean
-	@/bin/rm -rf $(NAME)
+clean fclean re::
+	@for file in $(dir $(REL_DEPS)) ; do $(MAKE) -C $$file $@ ; done
 
-re : fclean all
+clean::
+	@rm -rf build/
 
+fclean::
+	@rm -rf $(NAME)
+
+re:: fclean all
+
+.PHONY: clean fclean re all $(REL_DEPS)

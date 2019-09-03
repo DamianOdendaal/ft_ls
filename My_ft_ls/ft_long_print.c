@@ -1,6 +1,6 @@
 #include "../includes/ft_ls.h"
 
-void long_print(int argc, char **argv)
+void long_print(void)
 {
    //  if(argc != 2)    
    //     return 1;

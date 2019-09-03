@@ -1,27 +1,33 @@
 #include "../includes/ft_ls.h"
 
-int isFile(const char* name)
+t_bool isFile(const char* name)
 {
     DIR* directory = opendir(name);
 
     if (directory != NULL)
     {
         closedir(directory);
-        return (2);
+        return (FALSE);
     }
 
-    if (errno == ENOTDIR)
-        return (1);
-
-    return (-1);
+    return (errno == ENOTDIR);// ? TRUE : FALSE;
 }
 
-// int main(int ac, char **av)
+// #include "limits.h"
+
+// int main(int ac, t_strArray av)
 // {
-//     if (ac > 1)
-//     {
-//         printf("Is %s a file? %s.\n", av[1], ((isFile(av[1]) == 1) ? "Yes" : "No"));
-//         printf("Is %s a directory? %s.\n", av[1], ((isFile(av[1]) == 2) ? "Yes" : "No"));
-//     }
+
+//     // printf("%d\n%d\n", MININT, MAXINT);
+
+//     // #define MAXLONG ~(1L << 63)
+//     // #define MINLONG (1L << 63)
+
+//     // printf("%ld\n%ld\n", LONG_MAX, MAXLONG);
+//     // printf("%ld\n%ld\n", LONG_MIN, MINLONG);
+//     // printf("%d\n", (1 << 4));
+
+//     if (ACOUNT(ac))
+//         printf("%s Is a %s\n", av[1], isFile((const char *)av[1]) ? "FILE" : "FOLDER/DIR");
 //     return 0;
 // }

@@ -18,6 +18,27 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define TRUE 		1
+# define FALSE 		0
+
+# define MININT		(1 << 31)
+# define MAXINT		~(1 << 31)
+
+# define ACOUNT(x)	(x > 1)
+# define MALLCHECK(x, y) if (!x) return (y)
+
+//Very Questionable....
+# define MYMALLOC(x) (x*)malloc(sizeof(x))
+# define MYMALLOCLENGHT(x, y) (x*)malloc(sizeof(x) * y)
+
+// Everything is fine
+typedef char		*t_str;
+typedef char		*t_charPointer;
+typedef char		**t_strArray;
+typedef char		**t_strPointer;
+typedef int			t_bool;
+
+
 typedef struct		s_list
 {
 	void			*content;
@@ -95,3 +116,4 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+#endif

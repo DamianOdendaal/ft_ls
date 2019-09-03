@@ -281,4 +281,4 @@
 
        EXDEV           Improper link (POSIX.1-2001).
 
-       EXFULL          Exchange full.  */0
+       EXFULL          Exchange full.  */
