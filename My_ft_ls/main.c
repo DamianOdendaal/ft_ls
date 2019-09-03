@@ -37,8 +37,8 @@ int main(int ac, char **av)
 	t_flags	flags;
 
 	flags = 0;
-	//ft_print_bits(flags);
-	//ft_putendl("");
+	// ft_print_bits(flags);
+	// ft_putendl("");
 
 
 	i = 0;
@@ -47,10 +47,10 @@ int main(int ac, char **av)
 		currdir(&flags);
 	if (ac > 1)
 		i = check_flags(av, &flags);
-	//ft_putendl("");
+	// ft_putendl("");
 	if (!av[i])
 		currdir(&flags);
- 	//ft_print_bits(flags);
+ 	// ft_print_bits(flags);
 	ft_putendl("");
 	if (flags & f_a)
 	{
@@ -167,6 +167,17 @@ int main(int ac, char **av)
     //  #define S_IRUSR 0000400  /* read permission, owner */
     //  #define S_IWUSR 0000200  /* write permission, owner */
     //  #define S_IXUSR 0000100  /* execute/search permission, owner */
+
+
+
+
+
+
+
+
+
+
+
 
 
 	// struct stat	s_stat;

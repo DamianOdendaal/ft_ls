@@ -9,7 +9,7 @@ void dash1(t_flags *flags)
     curdir = opendir(".");
     if (!curdir)
     {
-        ft_putstr("No such directory");
+        ft_putstr("No such file or directory");
         exit(1);
     }
     while ((files = readdir(curdir)) != NULL)
@@ -17,9 +17,7 @@ void dash1(t_flags *flags)
         if (!(*flags & f_a) && files->d_name[0] == '.')
             continue;
         else
-		{
             ft_putendl(files->d_name);
-       }
     }
     closedir(curdir);
 }
