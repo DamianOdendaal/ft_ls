@@ -46,7 +46,18 @@ typedef	enum e_flags
 	f_1 = 32, 
 }		t_flags;
 
+typedef struct	s_ls_info
+{
+	char		*name;
+	char		perm[10];
+	short		hard_links;
+	char		*owner;
+	char		*group;
+	long long	bytes;
+	char	*time_modified;
+}	t_ls_info;
 
+void	ft_permission(t_ls_info *t_info, struct stat st);
 void	currdir(t_flags *flags);
 void	print_hidden();
 void	flag_activate(char c, t_flags *flags);
