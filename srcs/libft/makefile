@@ -6,7 +6,7 @@
 #    By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/05 12:58:49 by dodendaa          #+#    #+#              #
-#    Updated: 2019/09/10 16:16:00 by dodendaa         ###   ########.fr        #
+#    Updated: 2019/09/10 16:50:39 by dodendaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,17 +31,13 @@ SRCS = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 OBJS = $(SRCS:.c=.o)
 
 %.o: %.c
-	@echo "I am compiling: $@"
 	@gcc -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo "I am doing a thing"
 	@ar rc $(NAME) $(OBJS)
-	@echo "I am doing another thing"
 	@ranlib $(NAME)
-	@echo "I am done with $(NAME)"
 
 clean:
 	rm -f $(OBJS)
