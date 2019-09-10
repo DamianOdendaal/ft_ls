@@ -38,12 +38,6 @@ void	flag_activate(char c, t_flags *flags)
 	}
 }
 
-// 00000000 00000000 00000000 00000011 flags
-// 11111111 11111111 11111111 11111110 & ~(F_1) -> (SUM OF OFFS)
-// 00000000 00000000 10000000 00000010 flags
-// 00000000 00000000 00000100 00100000 | (SUMS OF ONS)
-// 00000000 00000000 10000100 00100010 flags
-
 int	check_flags(char **argv, t_flags *flags)
 {
 	int i;
@@ -66,6 +60,6 @@ int	check_flags(char **argv, t_flags *flags)
 		}
 		i++;
 	}
-	ft_print_bits(*flags);
+	//ft_print_bits(*flags);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:31:08 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/22 10:17:20 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/09 15:33:17 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 //Very Questionable....
 # define MYMALLOC(x) (x*)malloc(sizeof(x))
-# define MYMALLOCLENGHT(x, y) (x*)malloc(sizeof(x) * y)
+# define MYMALLOCLENGHT(x, y, z) x = (y*)malloc(sizeof(y) * z)
 
 // Everything is fine
 typedef char		*t_str;
@@ -46,6 +46,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					get_next_line(const int fd, char **line);
 size_t				ft_intlen(long int num);
 char				*ft_strndup(const char *str, size_t n);
 int					ft_iswhitespace(char c);

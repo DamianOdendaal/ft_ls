@@ -6,18 +6,18 @@
 #    By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/17 13:32:48 by dodendaa          #+#    #+#              #
-#    Updated: 2019/09/03 13:47:18 by dodendaa         ###   ########.fr        #
+#    Updated: 2019/09/09 17:02:55 by dodendaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=ft_ls
-DEPS=libft.a
+ALL_F=libft.a
 LIBFT_DIR=libft
-INCLUDES=$(LIBFT_DIR)
-REL_DEPS=$(DEPS:%=$(LIBFT_DIR)/%)
+INCLUDES=$(LIBFT_DIR)/includes
+REL_DEPS=$(ALL_F:%=$(LIBFT_DIR)/%)
 CC=gcc
-CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES) -I . -Ofast
-CFILES=	 main.c ft_check_dirs.c  ft_currdir.c  ft_dash1.c  ft_errors.c  ft_flags.c  ft_long_print.c \
+CFLAGS=-Wall -Wextra -Werror -I $(INCLUDES) -I .-Ofast
+CFILES=	 main.c ft_check_dirs.c  ft_currdir.c  ft_errors.c  ft_flags.c  ft_permissions.c ft_sort.c \
 		
 
 OBJ=$(CFILES:%.c=build/%.o)

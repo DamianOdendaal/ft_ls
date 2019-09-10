@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_long_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/05 13:35:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/10 16:14:43 by dodendaa         ###   ########.fr       */
+/*   Created: 2019/09/10 11:35:45 by dodendaa          #+#    #+#             */
+/*   Updated: 2019/09/10 14:41:38 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "..includes/ft_ls.h"
 
-void	ft_putstr(char const *s)
-{
-	int i;
+/* 
 
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-		write(1, &s[i++], 1);
-}
+1.) firsr i need to print permissions
+
+2.) print number links
+
+3.) owner
+
+4.) group
+
+5.) file size (in bytes)
+
+6.) time of last modification
+
+7.) file/dir name

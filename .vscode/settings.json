@@ -7,5 +7,6 @@
         "time.h": "c",
         "grp.h": "c",
         "limits.h": "c"
-    }
+    },
+    "files.autoSave": "onWindowChange"
 }

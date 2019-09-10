@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.c                                            :+:      :+:    :+:   */
+/*   ft_currdir.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/17 13:33:01 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/22 10:29:36 by dodendaa         ###   ########.fr       */
+/*   Created: 2019/09/10 11:36:56 by dodendaa          #+#    #+#             */
+/*   Updated: 2019/09/10 11:36:56 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 
 #include "../includes/ft_ls.h"
@@ -29,6 +31,8 @@ void currdir(t_flags *flags)
     {
         if (!(*flags & f_a) && files->d_name[0] == '.')
             continue;
+        else if (*flags & f_1)
+            ft_putendl(files->d_name);
         else
 		{
             ft_putstr(files->d_name);
