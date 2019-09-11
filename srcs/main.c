@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 12:54:04 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/10 16:35:18 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/11 16:40:43 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(int ac, char **av)
 	}
 	if (flags & f_l)
 	{
-		ft_putstr("flag l is set");
+		ft_putstr("Moms sphagetti");
 		//long_print();
 		ft_putendl("");
 	}

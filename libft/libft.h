@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:31:08 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/09 15:33:17 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/11 13:46:23 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,13 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+
+void				ft_space(void);
 int					get_next_line(const int fd, char **line);
 size_t				ft_intlen(long int num);
 char				*ft_strndup(const char *str, size_t n);
 int					ft_iswhitespace(char c);
-size_t				ft_wordcount(char *str, char delim);
+size_t          	ft_wordcount(const char *s, char c);
 size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *str);
 char				*ft_strcpy(char *dest, char *src);

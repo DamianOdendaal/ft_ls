@@ -24,7 +24,7 @@
 # include <pwd.h>
 # include <time.h>
 # include <errno.h>
-# include "libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_dir
 {
@@ -54,17 +54,17 @@ typedef struct	s_ls_info
 	char	*time_modified;
 }	t_ls_info;
 
-void	ft_permission(t_ls_info *t_info, struct stat st);
+char	*getuuid(uid_t uid);
+char	*getggruid(gid_t gid);
 void	currdir(t_flags *flags);
 void	flag_activate(char c, t_flags *flags);
-void	init_flags(t_flags *flags);
 int		check_flags(char **argv, t_flags *flags);
-//void	long_print(void); //change back to take in arguments
-void	ft_print_bits(int c);
+void	ft_print_bits(int c);						//not gonna need this in a while
 t_bool 	isFile(const char* name);
 int 	ft_ls(int ac, char **av);
 t_list	*insertion_sorter(t_list* head_n);
-void	ft_perm(t_ls_info *t_info, struct stat st);
+void 	ft_print_perm(t_ls_info *t_info, struct stat st);
+void	ft_print_mode(t_ls_info *t_info, struct stat st);
 
 
 #endif

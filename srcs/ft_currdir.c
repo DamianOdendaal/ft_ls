@@ -33,11 +33,13 @@ void currdir(t_flags *flags)
             continue;
         else if (*flags & f_1)
             ft_putendl(files->d_name);
-        else
+        else if (*flags & f_a)
 		{
             ft_putstr(files->d_name);
             ft_putchar('\t');
        }
+	   else
+			return ;
     }
     closedir(curdir);
 }
