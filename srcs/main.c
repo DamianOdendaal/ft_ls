@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 12:54:04 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/11 16:40:43 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/12 13:59:25 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,28 +35,20 @@ int main(int ac, char **av)
 {
 	int i;
 	t_flags	flags;
-
-	//flags = 0;
-	//ft_print_bits(flags);
-	//ft_putendl("");
-
+	struct stat *st;
 
 	i = 0;
+	st = NULL;
 	if (ac == 1)
 		currdir(&flags);
 	if (ac > 1)
 		i = check_flags(av, &flags);
 	if (!av[i])
 		currdir(&flags);
-	if (flags & f_a)
-	{
-		ft_putstr("flag a is set");
-		ft_putendl("");
-	}
 	if (flags & f_l)
 	{
-		ft_putstr("Moms sphagetti");
-		//long_print();
+		// ft_putstr("Moms sphagetti");
+		ft_print_long(&flags, av, st);
 		ft_putendl("");
 	}
 	if (flags & f_r)

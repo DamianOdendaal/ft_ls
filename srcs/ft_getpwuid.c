@@ -7,7 +7,7 @@ char	*getuuid(uid_t uid)
 	return (pswd->pw_name);
 }
 
-char	*getggrgid(gid_t gid)
+char	*getgroup(gid_t gid)
 {
 	struct group *pswd;
 	pswd = getgrgid(gid);

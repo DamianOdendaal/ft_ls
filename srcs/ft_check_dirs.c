@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 11:36:42 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/10 11:47:45 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/12 11:04:18 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,25 +21,13 @@ t_bool isFile(const char* name)
         closedir(directory);
         return (FALSE);
     }
-
-    return (errno == ENOTDIR);// ? TRUE : FALSE;
+    return (errno == ENOTDIR);
 }
 
-// #include "limits.h"
-
-// int main(int ac, t_strArray av)
-// {
-
-//     // printf("%d\n%d\n", MININT, MAXINT);
-
-//     // #define MAXLONG ~(1L << 63)
-//     // #define MINLONG (1L << 63)
-
-//     // printf("%ld\n%ld\n", LONG_MAX, MAXLONG);
-//     // printf("%ld\n%ld\n", LONG_MIN, MINLONG);
-//     // printf("%d\n", (1 << 4));
-
-//     if (ACOUNT(ac))
-//         printf("%s Is a %s\n", av[1], isFile((const char *)av[1]) ? "FILE" : "FOLDER/DIR");
-//     return 0;
-// }
+long long	ft_file_size(char **av)
+{
+	char *filename = av[1];
+	struct stat st;
+	stat(filename, &st);
+	return (st.st_size);		
+}

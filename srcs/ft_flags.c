@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dodendaa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:32:28 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/07/17 13:32:29 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/12 10:40:25 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	flag_activate(char c, t_flags *flags)
 		*flags |= f_t;
 	else if (c == '1')
 		*flags |= f_1;
+	else if (c == ' ')
+		*flags |= f_0;
 	else if (c == 'X')
 		*flags = (*flags & ~(f_a + f_t)) | (f_R);
 	else

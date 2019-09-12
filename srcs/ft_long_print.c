@@ -6,43 +6,42 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 11:35:45 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/11 16:40:43 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/12 15:07:25 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..includes/ft_ls.h"
+#include "../includes/ft_ls.h"
 
 
-void	ft_print_long(t_list *flags)  // check if you can take in the dir name as a parameter
+void	ft_print_long(t_flags *flags, char **av, struct stat *st)
 {
-	t_ls_info *info;
-	struct stat st;
-	uid_t uid;
-	gid_t gid;
+	t_ls_info	*info;
+	uid_t		uid;
+	gid_t		gid;
+	t_llong		bytes;
+	time_t		curtime;
+	(void)flags;		//fix this
 	
-	// permissions
-	ft_print_mode(info, st);
-	ft_print_perm(info, st);
-
-	// 2.) print number links
+	curtime = 0;
+	info = NULL;
+	uid = 0;
+	gid = 0;
+	ft_print_mode(info, *st);
+	ft_print_perm(info, *st);
 	ft_space(); 
 	ft_putnbr(st->st_nlink);
 	ft_space();
-
-	// 3.) owner
 	ft_putstr(getuuid(uid));
 	ft_space();
-
-	// 4.) group
-	ft_putstr(getggrgid(gid));
+	ft_putstr(getgroup(gid));
 	ft_space();
-
-	// 5.) file size (in bytes)
-
-
-
-	// 6.) time of last modification
-
+	bytes = ft_file_size(av);
+	ft_putnbr(bytes);
+	ft_space();
+	ft_mod_time(curtime);
+	ft_space();
 	// 7.) file/dir name
+	// ft_putstr();
+	// ft_putchar('\n');
 }
 

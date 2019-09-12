@@ -20,7 +20,7 @@ void currdir(t_flags *flags)
 
     DIR *curdir;
     struct dirent *files;
-
+	
     curdir = opendir(".");
     if (!curdir)
     {
@@ -33,13 +33,13 @@ void currdir(t_flags *flags)
             continue;
         else if (*flags & f_1)
             ft_putendl(files->d_name);
-        else if (*flags & f_a)
+        else 
 		{
             ft_putstr(files->d_name);
             ft_putchar('\t');
-       }
-	   else
-			return ;
-    }
+        }
+	}
+	if (!(*flags & f_1))
+    	ft_putchar('\n');
     closedir(curdir);
 }

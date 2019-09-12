@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:31:08 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/11 13:46:23 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/12 11:19:58 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,17 @@
 # define ACOUNT(x)	(x > 1)
 # define MALLCHECK(x, y) if (!x) return (y)
 
-//Very Questionable....
-# define MYMALLOC(x) (x*)malloc(sizeof(x))
-# define MYMALLOCLENGHT(x, y, z) x = (y*)malloc(sizeof(y) * z)
+// Very Questionable....
+// # define MYMALLOC(x) (x*)malloc(sizeof(x))
+// # define MYMALLOCLENGHT(x, y, z) x = (y*)malloc(sizeof(y) * z)
 
-// Everything is fine
+
 typedef char		*t_str;
 typedef char		*t_charPointer;
 typedef char		**t_strArray;
 typedef char		**t_strPointer;
 typedef int			t_bool;
+typedef long long	t_llong;
 
 
 typedef struct		s_list

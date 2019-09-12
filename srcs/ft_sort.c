@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 11:36:12 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/10 16:35:18 by dodendaa         ###   ########.fr       */
+/*   Updated: 2019/09/12 13:36:05 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,13 @@ t_list *insertion_sorter(t_list* head_n)
     }
     return (head_n);
 }
+
+
+void	ft_mod_time(time_t curtime)
+{
+	if (!curtime)
+		return ;
+	time(&curtime);
+	ft_putstr(ctime(&curtime));
+}
+
