@@ -13,33 +13,31 @@
 #include "../includes/ft_ls.h"
 
 
-void	ft_print_long(t_ls_info *info, char **av, struct stat *st)
+int		t_print_long(char *dir, char *name)
 {
-	uid_t		uid;
-	gid_t		gid;
-	t_llong		bytes;
-	time_t		curtime;
+	struct stat		s_stat;
+	struct password	uid;
+	struct group	gid;
+	t_ls_info		*t_info;
 	
-	curtime = 0;
-	info = NULL;
-	uid = 0;
-	gid = 0;
-	ft_print_mode(info, *st);
-	ft_print_perm(info, *st);
-	ft_space(); 
-	ft_putnbr(st->st_nlink);
+
+	ft_print_mode(t_info, *st);
+	ft_print_perm(t_info, *st);
+	t_info->hard_links = st->st_nlink;
+	uid = getuuid(s_stat.st_uid);
+	t_info->owner = uid.pw_uid;
+	gid = getgroup(s_stat.st_gid);
+	t_info->group = gid.pw_gid;
+	bytes = ft_file_size(name);
+	//ft_mod_time(curtime);
+	t_info->name = dir;
+	
+	// then printing 
+
+	ft_putstr(t_info->perm);
 	ft_space();
-	ft_putstr(getuuid(uid));
-	ft_space();
-	ft_putstr(getgroup(gid));
-	ft_space();
-	bytes = ft_file_size(av);
-	ft_putnbr(bytes);
-	ft_space();
-	ft_mod_time(curtime);
-	ft_space();
-	// 7.) file/dir name
-	// ft_putstr();
-	// ft_putchar('\n');
+
+
+	return (1);
 }
 
