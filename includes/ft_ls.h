@@ -21,7 +21,6 @@
 # include <sys/stat.h>
 # include <sys/types.h>
 # include <grp.h>
-#include <uuid/uuid.h>
 # include <pwd.h>
 # include <time.h>
 # include <errno.h>
@@ -65,7 +64,7 @@ void	flag_activate(char c, t_flags *flags);
 int		check_flags(char **argv, t_flags *flags);
 void	ft_print_bits(int c);						//not gonna need this in a while
 t_bool 	isFile(const char* name);
-void	ft_print_long(t_flags *flags, char **av, struct stat *st);
+void	ft_print_long(t_ls_info *info, char **av, struct stat *st);
 t_list	*insertion_sorter(t_list* head_n);
 void 	ft_print_perm(t_ls_info *t_info, struct stat st);
 void	ft_print_mode(t_ls_info *t_info, struct stat st);

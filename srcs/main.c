@@ -36,9 +36,11 @@ int main(int ac, char **av)
 	int i;
 	t_flags	flags;
 	struct stat *st;
+	t_ls_info *t_info;
 
 	i = 0;
 	st = NULL;
+	t_info = NULL;
 	if (ac == 1)
 		currdir(&flags);
 	if (ac > 1)
@@ -48,25 +50,24 @@ int main(int ac, char **av)
 	if (flags & f_l)
 	{
 		// ft_putstr("Moms sphagetti");
-		ft_print_long(&flags, av, st);
-		ft_putendl("");
+		ft_print_long(t_info, av, st);
+//		ft_putendl("");
 	}
-	if (flags & f_r)
-	{
-		ft_putstr("flag r is set");
-		ft_putendl("");
-	}
-	if (flags & f_R)
-	{
-		ft_putstr("flag R is set");
-		ft_putendl("");
-	}
-	if (flags & f_t)
-	{
-		ft_putstr("flag t is set");
-		ft_putendl("");
-	}
-	
+//	if (flags & f_r)
+//	{
+//		ft_putstr("flag r is set");
+//		ft_putendl("");
+//	}
+//	if (flags & f_R)
+//	{
+//		ft_putstr("flag R is set");
+//		ft_putendl("")
+//	}
+//	if (flags & f_t)
+//	{
+//		ft_putstr("flag t is set");
+//		ft_putendl("");
+//	}
 
 
 

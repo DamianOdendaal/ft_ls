@@ -13,14 +13,12 @@
 #include "../includes/ft_ls.h"
 
 
-void	ft_print_long(t_flags *flags, char **av, struct stat *st)
+void	ft_print_long(t_ls_info *info, char **av, struct stat *st)
 {
-	t_ls_info	*info;
 	uid_t		uid;
 	gid_t		gid;
 	t_llong		bytes;
 	time_t		curtime;
-	(void)flags;		//fix this
 	
 	curtime = 0;
 	info = NULL;
