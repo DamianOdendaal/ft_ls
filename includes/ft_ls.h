@@ -57,7 +57,7 @@ typedef struct	s_ls_info
 
 void	ft_mod_time(time_t curtime);
 long long	ft_file_size(char **av);
-char	*getuuid(uid_t uid);
+char  	*getuuid(uid_t uid);
 char	*getgroup(gid_t gid);
 void	currdir(t_flags *flags);
 void	flag_activate(char c, t_flags *flags);
