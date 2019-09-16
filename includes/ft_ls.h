@@ -43,6 +43,13 @@ typedef	enum e_flags
 	f_1 = 32, 
 }		t_flags;
 
+typedef	struct s_dlink
+{
+	char			*content;
+	struct s_link	*next;
+	struct s_link	*prev;
+}					t_dlink;
+
 typedef struct	s_ls_info
 {
 	char		*name;
