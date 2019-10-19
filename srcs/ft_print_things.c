@@ -42,6 +42,60 @@
 //	return (1);
 //}
 
+void	l(const char *path, t_info *info)
+{
+	blocks(path, info);
+	f_mode(path, info);
+	get_links(path, info);
+	get_owner(path, info);
+	get_group(path, info);
+	get_bytes(path, info);
+	get_m_time(path, info);
+}
+
+void	l_reg(const char *path)
+{
+	f_mode_reg(path);
+	get_links_reg(path);
+	get_owner_reg(path);
+	get_group_reg(path);
+	get_bytes_reg(path);
+	get_m_time_reg(path);
+	ft_putstr(path);
+	ft_putchar('\n');
+}
+
+void	l_for_reg(const char *path, t_flags *f, t_info *info, int b)
+{
+	if (is_reg(path) == 0)
+	{
+		if (f->l_flag == 1)
+		{
+			l_reg(path);
+			free(info[b].direct_n);
+			free(info[b].n_direct_n);
+		}
+		else
+		{
+			ft_putstr(path);
+			ft_putchar('\n');
+			free(info[b].direct_n);
+			free(info[b].n_direct_n);
+		}
+	}
+}
+
+void	no_args(t_flags *flags)
+{
+	t_info *info;
+
+	info = (t_info *)malloc(sizeof(t_info) * ~(1 << 31));
+	open_dir(".", info);
+	info_sort(flags, info);
+	funct(flags, info);
+	free(info);
+}
+
 void	print_long(t_info *info, int z)
 {
 	ft_putstr(info[z].perm);

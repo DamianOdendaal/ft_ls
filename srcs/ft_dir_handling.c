@@ -41,16 +41,23 @@ int	dir_or_not(const char *path, char *temp)
 	x = 0;
 	stat(path, &buf);
 	if (S_ISDIR(buf.st_mode))
-	{
-		temp[x] = 'd';
-		x++;
-	}
+		temp[x++] = 'd';
 	else
-	{
-		temp[x] = '-';
-		x++;
-	}
+		temp[x++] = '-';
 	return (x);
+}
+
+int	is_dir(char *path)
+{
+	struct stat	buf;
+
+	lstat(path, &buf);
+	if (S_ISDIR(buf.st_mode))
+		return (1);
+	else if (S_ISREG(buf.st_mode))
+		return (2);
+	else 
+		return (0);
 }
 
 int	directory_counter(char **argv)
@@ -128,6 +135,49 @@ int	get_dir_size(char *path, int x)
 				}
 				free(temp);
 			}
+	closedir(dir);void	combine(char *str, const char *path, t_info *info, int x)
+{
+	char	*dir_str;
+	char	*dirp_str;
+
+	dir_str = ft_strnew(255);
+	dirp_str = ft_strnew(ft_strlen(str));
+	ft_strcpy(dir_str, path);
+	ft_strcpy(dirp_str, str);
+	ft_strcat(dir_str, "/");
+	ft_strcat(dir_str, dirp_str);
+	info[x].n_direct_n = ft_strdup(dir_str);
+	info[x].direct_n = ft_strdup(str);
+	free(dir_str);
+	free(dirp_str);
+}
+
+void	open_dir(const char *path, t_info *info)
+{
+	int				x;
+	struct dirent	*dirp;
+	DIR				*dir;
+
+	x = 0;
+	dir = opendir(path);
+	if (dir == NULL)
+	{
+		ft_putstr("ls: ");
+		ft_putstr(path);
+		ft_putstr(": ");
+		ft_putstr(strerror(13));
+		ft_putchar('\n');
+		return ;
+	}
+	else
+		while ((dirp = readdir(dir)))
+		{
+			combine(dirp->d_name, path, info, x);
+			x++;
+		}
 	closedir(dir);
+}
 	return (x);
 }
+
+
