@@ -42,40 +42,20 @@
 //	return (1);
 //}
 
-int		ft_print_long(char *name, char *dir)
+void	print_long(t_info *info, int z)
 {
-	struct passwd 	*pw;
-	struct group	*gw;
-	t_info			*t_info;
-	struct stat 	sbuf;
-
-	if (!(t_info = malloc(sizeof(t_info))))
-		perror("t_info: ");
-	stat(ft_strjoin(ft_strjoin(name, "/"), dir), &sbuf);
-	ft_ls_perm(sbuf, t_info);
-	t_info->hlinks = sbuf.st_nlink;
-	pw = getpwuid(sbuf.st_uid);
-	t_info->owner = pw->pw_name;
-	gw = getgrgid(sbuf.st_gid);
-	t_info->group = gw->gr_name;
-	t_info->bytes = sbuf.st_size;
-	t_info->mod_time = ft_ctime(ctime(&sbuf.st_mtime));
-	t_info->name = dir;
-	
-
-	ft_putstr(t_info->perm);
+	ft_putstr(info[z].perm);
 	ft_putchar(' ');
-	ft_putshort(t_info->hlinks);
+	ft_putnbr(info[z].links);
 	ft_putchar(' ');
-	ft_putstr(t_info->owner);
+	ft_putstr(info[z].owner);
 	ft_putchar(' ');
-	ft_putstr(t_info->group);
+	ft_putstr(info[z].group);
 	ft_putchar(' ');
-	ft_putlongl(t_info->bytes);
+	ft_putnbr(info[z].bytes);
 	ft_putchar(' ');
-	ft_putstr(t_info->mod_time);
+	ft_putstr(info[z].m_time);
 	ft_putchar(' ');
-	ft_putstr(t_info->name);
+	ft_putstr(info[z].direct_n);
 	ft_putchar('\n');
-	return (1);
 }
