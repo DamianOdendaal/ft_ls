@@ -62,19 +62,49 @@ typedef struct	s_ls_info
 }	t_ls_info;
 
 
-void	ft_mod_time(time_t curtime);
+void currdir(t_flags *flags);
+void	file_collector(char **argv, t_info *info);
+void	file_size_bytes(const char *path, t_info *bytes);
+void	file_size_bytes_reg(const char *path);
+void 	ft_print_perms(char *perm, struct stat st);
+void	ft_print_mode(int *perm, struct stat st);		//change 10 to 11 because of null terminator
+void	info_sort(t_flags *flags, t_info *info);
+void	info_sort_2(t_flags *flags, t_info *info, int a);
+void	r_sort(t_info *direct_name);
+void	r_sort_2(t_info *direct_name, int y);
+t_bool isFile(const char* name);				//have a look at how to mak the t_bool
 long long	ft_file_size(char **av);
-char  	*getuuid(uid_t uid);
-char	*getgroup(gid_t gid);
-void	currdir(t_flags *flags);
+int	dir_or_not(const char *path, char *temp);
+int	is_dir(char *path);
+int	directory_counter(char **argv);
+int	directory_collector(char **argv, t_dir *direct_o);
+int	get_dir_size(char *path, int x);
+void	open_dir(const char *path, t_info *info);
 void	flag_activate(char c, t_flags *flags);
-int		check_flags(char **argv, t_flags *flags);
-void	ft_print_bits(int c);						//not gonna need this in a while
-t_bool 	isFile(const char* name);
-void	ft_print_long(char *name, char *dir);
-t_list	*insertion_sorter(t_list* head_n);
-void 	ft_print_perm(t_ls_info *t_info, struct stat st);
-void	ft_print_mode(t_ls_info *t_info, struct stat st);
+int	check_flags(char **argv, t_flags *flags);
+void	l(const char *path, t_info *info);
+void	l_reg(const char *path);
+void	l_for_reg(const char *path, t_flags *f, t_info *info, int b);
+void	no_args(t_flags *flags);
+void	print_long(t_info *info, int z);
+void	get_m_time(const char *path, t_info *m_time);
+void	get_m_time_reg(const char *path);
+void	error_mess(char *tmp);
+void	error_mess_01(char c);
+void	get_group(const char *path, t_info *group);
+void	get_group_reg(const char *path);
+void	get_links(const char *path, t_info *link);
+void	get_links_reg(const char *path);
+void	get_owner(const char *path, t_info *owner);
+void	get_owner_reg(const char *path);
+ssize_t	get_size(const char *path);
+int		do_stuff(t_info *info, const char *path, int y, int t);
+int		check_null(t_info *info, int *z);
+void	free_info(t_info *info);
+int		recursion(const char *path, t_dir *d, t_flags *flags, int y);
+
+
+
 
 
 #endif
