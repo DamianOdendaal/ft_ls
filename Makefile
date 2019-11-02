@@ -19,8 +19,9 @@ LIBFT_LIB = -L $(LIBFT_DIR) -lft
 HEADERS = -I./includes -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Werror -Wextra $(HEADERS)
 CC = gcc -g
-SOURCES = main.c ft_check_dirs.c  ft_currdir.c  ft_errors.c  ft_flags.c \
-		ft_permissions.c ft_sort.c ft_getpwuid.c ft_long_print.c\
+SOURCES = ft_currdir.c ft_file_handling.c ft_permissions.c ft_sorting.c\
+			ft_dir_handling.c ft_flags.c ft_print_things.c ft_time.c\
+			ft_error.c ft_owners.c ft_recurse.c\
 
 OBJECTS = $(addprefix $(OBJS_D)/,$(SOURCES:.c=.o))
 
