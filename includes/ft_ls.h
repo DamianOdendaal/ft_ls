@@ -50,16 +50,16 @@ typedef	struct s_dlink
 	struct s_link	*prev;
 }					t_dlink;
 
-typedef struct	s_ls_info
+typedef struct	s_info
 {
 	char		*name;
-	char		perm[10];
+	char		perm[11];
 	short		hard_links;
 	char		*owner;
 	char		*group;
 	long long	bytes;
 	char	*time_modified;
-}	t_ls_info;
+}	t_info;
 
 
 void currdir(t_flags *flags);
@@ -67,7 +67,7 @@ void	file_collector(char **argv, t_info *info);
 void	file_size_bytes(const char *path, t_info *bytes);
 void	file_size_bytes_reg(const char *path);
 void 	ft_print_perms(char *perm, struct stat st);
-void	ft_print_mode(int *perm, struct stat st);		//change 10 to 11 because of null terminator
+void	ft_print_mode(int *perm, struct stat st);
 void	info_sort(t_flags *flags, t_info *info);
 void	info_sort_2(t_flags *flags, t_info *info, int a);
 void	r_sort(t_info *direct_name);
