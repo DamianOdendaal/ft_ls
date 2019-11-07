@@ -1,5 +1,17 @@
-// header here bruh bruh
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_file_handling.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/07 12:54:31 by dodendaa          #+#    #+#             */
+/*   Updated: 2019/11/07 12:55:26 by dodendaa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+
+#include "includes/ft_ls.h"
 
 void	file_collector(char **argv, t_info *info) // change from collector to like store files or something for dirs too
 {

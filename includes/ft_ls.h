@@ -24,7 +24,7 @@
 # include <pwd.h>
 # include <time.h>
 # include <errno.h>
-# include "../libft/libft.h"
+# include "libft/libft.h"
 
 typedef struct	s_dir
 {
