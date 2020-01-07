@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 11:36:07 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/11 12:29:24 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/01/07 10:57:19 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void 	ft_print_perms(char *perm, struct stat st)
      
 }
 
-void	ft_print_mode(int *perm, struct stat st)
+void	ft_print_mode(struct stat st)
 {
 	char perm[10];
 	ft_memset(perm, '-', 10);

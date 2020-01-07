@@ -6,34 +6,49 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:54:31 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/11/07 12:55:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/01/07 10:48:14 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "includes/ft_ls.h"
+#include "../includes/ft_ls.h"
+
+// function that checks if something is a file or a dir
+
+int	is_reg(const char *path)
+{
+	struct stat buf;
+
+	stat(path, &buf);
+	if (S_ISDIR(buf.st_mode))
+		return (1);
+	else if (S_ISREG(buf.st_mode))
+		return (0);
+	else
+		return (2);
+}
 
 void	file_collector(char **argv, t_info *info) // change from collector to like store files or something for dirs too
 {
-	int		x;
-	int		y;
-	int		z;
+	// int		x;
+	int		index;
+	int		arguments;
 	char	*tmp;
 
-	x = 0;
-	y = 0;
-	z = 1;
-	while (argv[z])
+	// x = 0;
+	index = 0;
+	arguments = 1;
+	while (argv[arguments])
 	{
-		tmp = ft_strdup(argv[z]);
+		tmp = ft_strdup(argv[arguments]);
 		if (is_reg(tmp) == 0)
 		{
-			info[y].direct_n = ft_strdup(tmp);
-			info[y].n_direct_n = ft_strdup(tmp);
-			y++;
+			info[index].direct_n = ft_strdup(tmp);
+			info[index].n_direct_n = ft_strdup(tmp);
+			index++;
 		}
 		free(tmp);
-		z++;
+		arguments++;
 	}
 }
 

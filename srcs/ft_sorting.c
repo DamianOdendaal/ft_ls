@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:55:00 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/11/07 12:55:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/01/07 11:23:06 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	info_sort(t_flags *flags, t_info *info)
 {
-	if (flags->t_flag == 1)
+	if (flags->f_r == 1)
 	{
 		r_sorting(info);
 		t_sorting(info);
