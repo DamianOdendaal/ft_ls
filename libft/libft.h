@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:31:08 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/09/12 11:19:58 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:47:24 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_list
 }					t_list;
 
 
+void    			ft_swap(char *src, char *dest);
 void				ft_space(void);
 int					get_next_line(const int fd, char **line);
 size_t				ft_intlen(long int num);

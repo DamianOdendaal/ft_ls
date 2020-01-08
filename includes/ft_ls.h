@@ -15,8 +15,6 @@
 # define FT_LS_H
 # include <unistd.h>
 # include <stdlib.h>
-// # include <stdio.h>
-// # include <string.h>
 # include <dirent.h>
 # include <sys/stat.h>
 # include <sys/types.h>
@@ -30,7 +28,7 @@ typedef struct	s_dir
 {
 	char	*dirname;
 	struct s_dir	*next;
-}	t_dir;
+}				t_dir;
 
 typedef	enum e_flags
 {
@@ -41,14 +39,14 @@ typedef	enum e_flags
 	f_R = 8,
 	f_t = 16,
 	f_1 = 32, 
-}		t_flags;
+}			t_flags;
 
 typedef	struct s_dlink
 {
 	char			*content;
 	struct s_link	*next;
 	struct s_link	*prev;
-}					t_dlink;
+}				t_dlink;
 
 typedef struct	s_info
 {
@@ -103,6 +101,7 @@ ssize_t		get_size(const char *path);
 int			do_stuff(t_info *info, const char *path, int y, int t);
 int			check_null(t_info *info, int *z);
 void		free_info(t_info *info);
+void		reverse_sorting(t_info *direct_name);
 int			recursion(const char *path, t_dir *d, t_flags *flags, int y);
 
 

@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:55:11 by dodendaa          #+#    #+#             */
-/*   Updated: 2019/11/07 12:55:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/01/08 16:47:28 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ void	get_m_time_reg(const char *path)
 	free(trim);
 }
 
-//see what the difference between the top two functions are
