@@ -52,7 +52,7 @@ typedef struct	s_info
 {
 	char		*name;
 	char		perm[11];
-	short		hard_links;
+	short		links;
 	char		*owner;
 	char		*group;
 	long long	bytes;
