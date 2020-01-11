@@ -22,30 +22,30 @@ void	swap(t_info *d_name, int z)
 
     // storing the path and the name of a dir in vars 
 
-	temp = ft_strnew(ft_strlen(d_name[z].n_direct_n));   // directory path 
-	temp2 = ft_strnew(ft_strlen(d_name[z].direct_n));     // dir name here 
-	ft_strcpy(temp, d_name[z].n_direct_n);              // copy the path of the file into the first temp value  
-	free(d_name[z].n_direct_n);
-	ft_strcpy(temp2, d_name[z].direct_n);
-	free(d_name[z].direct_n);
+	temp = ft_strnew(ft_strlen(d_name[z].directory_path));   // directory path 
+	temp2 = ft_strnew(ft_strlen(d_name[z].directory_name));     // dir name here 
+	ft_strcpy(temp, d_name[z].directory_path);              // copy the path of the file into the first temp value  
+	free(d_name[z].directory_path);
+	ft_strcpy(temp2, d_name[z].directory_name);
+	free(d_name[z].directory_name);
 
     
 
-	d_name[z].n_direct_n = ft_strnew(ft_strlen(d_name[z + 1].n_direct_n));
-	d_name[z].direct_n = ft_strnew(ft_strlen(d_name[z + 1].direct_n));
-	ft_strcpy(d_name[z].n_direct_n, d_name[z + 1].n_direct_n);
-	free(d_name[z + 1].n_direct_n);
-	ft_strcpy(d_name[z].direct_n, d_name[z + 1].direct_n);
-	free(d_name[z + 1].direct_n);
-	d_name[z + 1].n_direct_n = ft_strnew(ft_strlen(temp));
-	d_name[z + 1].direct_n = ft_strnew(ft_strlen(temp2));
-	ft_strcpy(d_name[z + 1].n_direct_n, temp);
-	ft_strcpy(d_name[z + 1].direct_n, temp2);
+	d_name[z].directory_path = ft_strnew(ft_strlen(d_name[z + 1].directory_path));
+	d_name[z].directory_name = ft_strnew(ft_strlen(d_name[z + 1].directory_name));
+	ft_strcpy(d_name[z].directory_path, d_name[z + 1].directory_path);
+	free(d_name[z + 1].directory_path);
+	ft_strcpy(d_name[z].directory_name, d_name[z + 1].directory_name);
+	free(d_name[z + 1].directory_name);
+	d_name[z + 1].directory_path = ft_strnew(ft_strlen(temp));
+	d_name[z + 1].directory_name = ft_strnew(ft_strlen(temp2));
+	ft_strcpy(d_name[z + 1].directory_path, temp);
+	ft_strcpy(d_name[z + 1].directory_name, temp2);
 	free(temp);
 	free(temp2);
 }
 
-void	reverse_sorting(t_info *direct_name)
+void	reverse_sorting(t_info *directory_nameame)
 {
 	int index;
 	int arg;
@@ -53,7 +53,7 @@ void	reverse_sorting(t_info *direct_name)
 
 	res = 0;
 	index = 0;
-	while (direct_name[index].direct_n && direct_name[index].direct_n != NULL)
+	while (directory_nameame[index].directory_name && directory_nameame[index].directory_name != NULL)
 		index++;
 	index--;
 	while (index)
@@ -61,9 +61,9 @@ void	reverse_sorting(t_info *direct_name)
 		arg = 0;
 		while (arg < index)
 		{
-			res = ft_strcmp(direct_name[arg].direct_n, direct_name[arg + 1].direct_n);
+			res = ft_strcmp(directory_nameame[arg].directory_name, directory_nameame[arg + 1].directory_name);
 			if (res < 0)
-				swap(direct_name, arg);
+				swap(directory_nameame, arg);
 			arg++;
 		}
 		index--;
@@ -96,7 +96,7 @@ void	info_sort_2(t_flags *flags, t_info *info, int a)
 		r_sort_2(info, a);
 }
 
-void	r_sort(t_info *direct_name)
+void	r_sort(t_info *directory_nameame)
 {
 	int		index;
 	int		sec_index;
@@ -104,31 +104,31 @@ void	r_sort(t_info *direct_name)
 
 	index = 0;
 	sec_index = 0;
-	while (direct_name[index].n_direct_n)
+	while (directory_nameame[index].directory_path)
 		index++;
 	index--;
-	while (direct_name[sec_index].n_direct_n && sec_index < index)
+	while (directory_nameame[sec_index].directory_path && sec_index < index)
 	{
-		temp = direct_name[sec_index];
-		direct_name[sec_index] = direct_name[index];
-		direct_name[index] = temp;
+		temp = directory_nameame[sec_index];
+		directory_nameame[sec_index] = directory_nameame[index];
+		directory_nameame[index] = temp;
 		sec_index++;
 		index--;
 	}
 }
 
-void	r_sort_2(t_info *direct_name, int y)
+void	r_sort_2(t_info *directory_nameame, int y)
 {
 	int		x;
 	t_info	temp;
 
 	x = 0;
 	y--;
-	while (direct_name[x].n_direct_n && x < y)
+	while (directory_nameame[x].directory_path && x < y)
 	{
-		temp = direct_name[x];
-		direct_name[x] = direct_name[y];
-		direct_name[y] = temp;
+		temp = directory_nameame[x];
+		directory_nameame[x] = directory_nameame[y];
+		directory_nameame[y] = temp;
 		x++;
 		y--;
 	}

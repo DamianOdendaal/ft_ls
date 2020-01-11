@@ -43,8 +43,8 @@ void	file_collector(char **argv, t_info *info) // change from collector to like 
 		tmp = ft_strdup(argv[arguments]);
 		if (is_reg(tmp) == 0)
 		{
-			info[index].direct_n = ft_strdup(tmp);
-			info[index].n_direct_n = ft_strdup(tmp);
+			info[index].directory_name = ft_strdup(tmp);
+			info[index].directory_path = ft_strdup(tmp);
 			index++;
 		}
 		free(tmp);

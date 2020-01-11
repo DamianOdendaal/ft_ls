@@ -26,7 +26,7 @@ int		do_stuff(t_info *info, const char *path, int y, int t)
 int		check_null(t_info *info, int *z)
 {
 	*z = -1;
-	if (info[0].direct_n == NULL)
+	if (info[0].directory_name == NULL)
 	{
 		free(info);
 		return (1);
@@ -40,10 +40,10 @@ void	free_info(t_info *info)
 	int z;
 
 	z = 0;
-	while (info[z].n_direct_n && info[z].n_direct_n != NULL)
+	while (info[z].directory_path && info[z].directory_path != NULL)
 	{
-		free(info[z].n_direct_n);
-		free(info[z].direct_n);
+		free(info[z].directory_path);
+		free(info[z].directory_name);
 		z++;
 	}
 	free(info);
@@ -63,11 +63,11 @@ int		recursion(const char *path, t_dir *d, t_flags *flags, int y)
 	else
 	{
 		info_sort(flags, info);
-		while (info[++z].n_direct_n && info[z].n_direct_n != NULL)
-			if (is_dir(info[z].n_direct_n) == 1 && dot(info[z].direct_n) == 1)
+		while (info[++z].directory_path && info[z].directory_path != NULL)
+			if (is_dir(info[z].directory_path) == 1 && dot(info[z].directory_name) == 1)
 			{
-				d[t].direct_o = ft_strnew(ft_strlen(info[z].n_direct_n));
-				temp = ft_strdup(info[z].n_direct_n);
+				d[t].direct_o = ft_strnew(ft_strlen(info[z].directory_path));
+				temp = ft_strdup(info[z].directory_path);
 				ft_strcpy(d[t].direct_o, temp);
 				t++;
 				recursion(temp, d, flags, y);

@@ -57,8 +57,8 @@ typedef struct	s_info
 	char		*group;
 	long long	bytes;
 	char		*time_modified;
-	char		*direct_n;
-	char		*n_direct_n;
+	char		*directory_name;
+	char		*directory_path;
 }	t_info;
 
 

@@ -72,15 +72,15 @@ void	l_for_reg(const char *path, t_flags *f, t_info *info, int b)
 		if (f->l_flag == 1)
 		{
 			l_reg(path);
-			free(info[b].direct_n);
-			free(info[b].n_direct_n);
+			free(info[b].directory_name);
+			free(info[b].directory_path);
 		}
 		else
 		{
 			ft_putstr(path);
 			ft_putchar('\n');
-			free(info[b].direct_n);
-			free(info[b].n_direct_n);
+			free(info[b].directory_name);
+			free(info[b].directory_path);
 		}
 	}
 }
@@ -110,6 +110,6 @@ void	print_long(t_info *info, int z)
 	ft_putchar(' ');
 	ft_putstr(info[z].m_time);
 	ft_putchar(' ');
-	ft_putstr(info[z].direct_n);
+	ft_putstr(info[z].directory_name);
 	ft_putchar('\n');
 }

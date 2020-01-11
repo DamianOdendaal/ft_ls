@@ -146,8 +146,8 @@ int	get_dir_size(char *path, int x)
 	ft_strcpy(dirp_str, str);
 	ft_strcat(dir_str, "/");
 	ft_strcat(dir_str, dirp_str);
-	info[x].n_direct_n = ft_strdup(dir_str);
-	info[x].direct_n = ft_strdup(str);
+	info[x].directory_path = ft_strdup(dir_str);
+	info[x].directory_name = ft_strdup(str);
 	free(dir_str);
 	free(dirp_str);
 }
