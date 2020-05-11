@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:31:08 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/01/08 16:47:24 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/10 17:01:43 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct		s_list
 }					t_list;
 
 
+int					ft_charcasecmp(const char char1, const char char2);
+void    			ft_putstrTab(char *string);
+void    			ft_3t_printer(char *first, char *second, char *third);
 void    			ft_swap(char *src, char *dest);
 void				ft_space(void);
 int					get_next_line(const int fd, char **line);

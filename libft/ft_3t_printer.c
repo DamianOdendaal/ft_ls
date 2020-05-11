@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_3t_printer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/03 16:20:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/07 20:24:33 by dodendaa         ###   ########.fr       */
+/*   Created: 2020/05/07 19:11:15 by dodendaa          #+#    #+#             */
+/*   Updated: 2020/05/09 10:01:20 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
-{
-	int i;
-	int j;
 
-	j = 0;
-	i = j;
-	while (s1[i])
-		i++;
-	while (s2[j])
-	{
-		s1[i + j] = s2[j];
-		j++;
-	}
-	s1[i + j] = '\0';
-	return (s1);
+void    ft_3t_printer(char *first, char *second, char *third)
+{
+    if (first == NULL || second == NULL || third == NULL)
+    {
+        return ;
+    }
+    ft_putstr(first);
+    ft_putstr(second);
+    ft_putstr(third);
 }

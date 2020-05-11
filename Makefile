@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dodendaa <dodendaa@student.42.fr>          +#+  +:+       +#+         #
+#    By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/17 13:32:48 by dodendaa          #+#    #+#              #
-#    Updated: 2019/09/12 15:10:18 by dodendaa         ###   ########.fr        #
+#    Updated: 2020/05/09 18:47:22 by dodendaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,14 @@ LIBFT_DIR = libft
 LIBFT_CFILES = libft/%.c
 SRCS_D = srcs
 OBJS_D = objs
-LIBFT_LIB = -L $(LIBFT_DIR) -lft
+LIBFT_LIB = -L $(LIBFT_DIR)/ -lft
+LIB = libft/libft.a
 HEADERS = -I./includes -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Werror -Wextra $(HEADERS)
 CC = gcc -g
-SOURCES = ft_currdir.c ft_file_handling.c ft_permissions.c ft_sorting.c\
-			ft_dir_handling.c ft_flags.c ft_print_things.c ft_time.c\
-			ft_error.c ft_owners.c ft_recurse.c\
+
+SOURCES = convert.c error_handling.c flags.c ft_ls.c listing.c\
+			output.c setting_ls.c output2.c recursion.c sorting.c\
 
 OBJECTS = $(addprefix $(OBJS_D)/,$(SOURCES:.c=.o))
 
@@ -31,7 +32,7 @@ $(OBJS_D)/%.o: $(SRCS_D)/%.c libft/libft.h includes/*
 
 $(NAME): dir $(OBJECTS)
 	@make -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT_LIB) $(HEADERS)
+	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) $(LIB) 
 	@echo "\033[1;32;mft_ls ready to use! \t\033[0m"
 
 all: dir $(NAME)
