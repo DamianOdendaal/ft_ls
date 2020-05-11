@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:33 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 19:25:25 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/11 21:34:57 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		*get_name(t_dir *list)
 */
 
 // draw a pic here of how this works
-void		reverse_list(struct s_dir **head_ref)
+void		reverse_list(struct s_dir **head_ref, unsigned char flags)
 {
 	struct s_dir *prev;
 	struct s_dir *current;
@@ -84,6 +84,13 @@ void		reverse_list(struct s_dir **head_ref)
 	next = NULL;
 	while (current != NULL)
 	{
+		if (current->name[0] == '.' && !(flags & 2))
+		{
+			if (current->name[0] == 'a')
+				continue;
+			else
+				current = current->next;
+		}
 		next = current->next;
 		current->next = prev;
 		prev = current;

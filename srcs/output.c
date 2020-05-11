@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 19:42:02 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/11 22:16:43 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,11 +128,42 @@ void	supress_owner_print_list(t_dir *list, unsigned char flags, char *path)
 }
 
 
-
-void quick_print_list(t_dir *head) {
+void file_per_line(t_dir *head, unsigned char flags) 
+{
     t_dir *current = head;
 
-    while (current != NULL) {
+    while (current != NULL) 
+	{
+	
+		if ((flags & 2))
+		{
+			
+			ft_putstr(current->name);
+			ft_putchar('\n');
+			current = current->next;
+		}
+		else
+		{
+			if (current->name[0] != '.')
+			{
+				ft_putstr(current->name);
+				if (current->next != NULL)
+					ft_putchar('\n');
+			}
+		}
+		current = current->next;
+    }
+	ft_putchar('\n');
+}
+
+
+void quick_print_list(t_dir *head) 
+{
+    t_dir *current = head;
+
+    while (current != NULL) 
+	{
+	
       	ft_putstr(current->name);
 		ft_putchar('\t');
         current = current->next;
@@ -181,14 +212,17 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 	else if (flags & 8)
 	{
 		result = sort(list);
-		reverse_list(&result);
+		reverse_list(&result, flags);
 		quick_print_list(result);
 	}
 	else if (flags & 32)
 		supress_owner_print_list(list, flags, path);
 
-	// else if (flags & 16)
-		// time sort now then we done
+	else if (flags & 64)
+	{
+		result = sort(list);
+		file_per_line(result, flags);
+	}
 
 	else
 		standard_out(list, flags);

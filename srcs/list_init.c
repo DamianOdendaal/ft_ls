@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setting_ls.c                                       :+:      :+:    :+:   */
+/*   list_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/07 20:54:39 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/11 20:12:25 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // change to initialize list 
 
-t_dir	*setting_lst(struct dirent *de, char *path)
+t_dir	*list_init(struct dirent *de, char *path)
 {
 	t_dir		*new;
 	struct stat	sb;

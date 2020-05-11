@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:13 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/07 20:54:45 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/11 20:12:27 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	list_add(t_dir **alst, struct dirent *de, char *path)
 {
 	t_dir *new;
 
-	new = setting_lst(de, path);
+	new = list_init(de, path);
 	new->next = *alst;
 	*alst = new;
 }

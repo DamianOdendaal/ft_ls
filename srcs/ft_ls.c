@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 19:45:23 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/11 22:17:06 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_ls(char *d_path, unsigned char flags)
 	while ((entries = readdir(dire)))
 	{
 		if (!content)
-			content = setting_lst(entries, d_path);
+			content = list_init(entries, d_path);
 		else
 			list_add(&content, entries, d_path);
 	}
@@ -76,5 +76,6 @@ int		main(int ac, char *av[])
 		check = implement_args(ac, av, flags);
 		(check == 0) ? ft_ls(".", flags) : 0;
 	}
+	sleep(60);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/17 13:32:48 by dodendaa          #+#    #+#              #
-#    Updated: 2020/05/09 18:47:22 by dodendaa         ###   ########.fr        #
+#    Updated: 2020/05/11 20:12:19 by dodendaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CFLAGS = -Wall -Werror -Wextra $(HEADERS)
 CC = gcc -g
 
 SOURCES = convert.c error_handling.c flags.c ft_ls.c listing.c\
-			output.c setting_ls.c output2.c recursion.c sorting.c\
+			output.c list_init.c output2.c recursion.c sorting.c\
 
 OBJECTS = $(addprefix $(OBJS_D)/,$(SOURCES:.c=.o))
 
