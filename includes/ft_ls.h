@@ -52,8 +52,7 @@ typedef struct		s_dir
 
 
 
-int					error_handle(char *path, DIR *d_path, int ierrno,
-						unsigned int flag);
+int					error_handle(char *path, DIR *d_path, int ierrno);
 void				convert_date(char *str);
 void				delete_list(t_dir **list);
 void				list_add(t_dir **alst, struct dirent *de, char *path);

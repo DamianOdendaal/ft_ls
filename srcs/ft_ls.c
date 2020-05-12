@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/12 21:28:14 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/12 22:12:37 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_ls(char *d_path, unsigned char flags)
 	content = NULL;
 	entries = NULL;
 	dire = opendir(d_path);
-	if (error_handle(d_path, dire, errno, flags) == 1)
+	if (error_handle(d_path, dire, errno) == 1)
 		return ;
 	while ((entries = readdir(dire)))
 	{

@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:50:39 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 19:38:02 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/12 22:14:16 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 int				inspect_flags(char c)
 {
 
-	// add g flag here 
 	if (c == 'l')
 		return (1);
 	else if (c == 'a')
@@ -35,7 +34,6 @@ int				inspect_flags(char c)
 	return (0);
 }
 
-//
 unsigned char	get_flags(unsigned char flags)
 {
 	//what is diffile_error
@@ -46,12 +44,8 @@ unsigned char	get_flags(unsigned char flags)
 
 void			illegal_options(char ch)
 {
-	//change colors
-	ft_putstr("\033[0;31m");
 	ft_putstr("ft_ls: illegal option -- ");
 	ft_putchar(ch);
-	ft_putstr("\033[0;32m");
-	// TODO: what is putstrx3 
 	ft_3t_printer("\n", "usage: ft_ls [-Ralrt] [file ...]", "\n");
 	exit(1);
 }
