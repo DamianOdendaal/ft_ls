@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 22:17:06 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/12 21:28:14 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,5 @@ int		main(int ac, char *av[])
 		check = implement_args(ac, av, flags);
 		(check == 0) ? ft_ls(".", flags) : 0;
 	}
-	sleep(60);
 	return (0);
 }

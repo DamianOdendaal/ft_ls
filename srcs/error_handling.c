@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:37 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/07 20:54:48 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/12 21:52:47 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	permission_error(char *path)
 void	dirfile_error(char *path)
 {
 	ft_putstr("\033[0;33m");
-	ft_3t_printer("ft_ls: ", path, ": No such file or directory\n");
+	ft_3t_printer("ft_ls: cannot access ", path, ": No such file or directory\n");
 }
 
 int		error_handle(char *path, DIR *dp, int ierrno, unsigned int flag)

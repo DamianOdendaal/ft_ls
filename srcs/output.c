@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 22:16:43 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/12 21:43:38 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,9 +206,12 @@ void	standard_out(t_dir *list, unsigned char flags)
 void	print_output(t_dir *list, unsigned char flags, char *path)
 {
 	t_dir	*result;
-	// (flags & 1) ? print_list(list, flags, path) : 
 	if (flags & 1)
 		print_list(list, flags, path);
+	else if (flags & 2)
+	{
+
+	}
 	else if (flags & 8)
 	{
 		result = sort(list);
