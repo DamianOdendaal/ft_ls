@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/12 22:12:37 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/14 08:32:32 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,17 @@ void	ft_ls(char *d_path, unsigned char flags)
 	}
 	closedir(dire);
 	
-	if ((flags & 16))
+	if (flags & 16)
 		merge_sort(&content, flags);
+	
 	print_output(content, flags, d_path);
-	recursion(content, flags, d_path);
 	delete_list(&content);
 }
 
 
 //change implement to confirm
 
-int		implement_args(int ac, char *av[], unsigned char flags)
+int		check_arguments(int ac, char *av[], unsigned char flags)
 {
 	int i;
 	int check;
@@ -73,7 +73,7 @@ int		main(int ac, char *av[])
 		ft_ls(".", flags);
 	else
 	{
-		check = implement_args(ac, av, flags);
+		check = check_arguments(ac, av, flags);
 		(check == 0) ? ft_ls(".", flags) : 0;
 	}
 	return (0);

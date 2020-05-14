@@ -82,7 +82,7 @@ void				long_print_no_owner(t_dir *lst, char *path, unsigned char flags);
 t_dir				*sort(t_dir *unsorted);
 t_dir				*ft_alpha_sort(t_dir *list, unsigned char flags);
 int 				get_list_length(t_dir *list);
-
+void				sort_time(t_dir *names, int len);
 
 
 

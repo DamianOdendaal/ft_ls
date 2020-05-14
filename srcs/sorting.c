@@ -6,16 +6,100 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:33 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 21:34:57 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/14 09:17:56 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
 
+// static void		match_times(t_dir *names, time_t filetimes[])
+// {
+// 	int				i;
+// 	struct stat		filestat;
+
+// 	i = 0;
+//     while (names->next != NULL)
+// 	{
+// 		lstat(names->name,  &filestat);
+// 		filetimes[i++] = filestat.st_mtimespec.tv_sec;
+// 		names = names->next;
+// 	}
+// }
+
+// static void		swap_tsec(t_dir *none, t_dir *ntwo, time_t *tone, time_t *ttwo)
+// {
+// 	char			*temp;
+// 	time_t			temptime;
+
+// 	temp = none->name;
+// 	none->name = ntwo->name;
+// 	ntwo->name = temp;
+// 	temptime = *tone;
+// 	*tone = *ttwo;
+// 	*ttwo = temptime;
+// }
+
+// static void		swap_tnsec(t_dir *name1, t_dir *name2)
+// {
+// 	char		*temp;
+// 	struct stat	name1stat;
+// 	struct stat	name2stat;
+
+// 	lstat(name1->name, &name1stat);
+// 	lstat(name2->name, &name2stat);
+// 	if (name1stat.st_mtimespec.tv_nsec < name2stat.st_mtimespec.tv_nsec)
+// 	{
+// 		temp = name1->name;
+// 		name1->name = name2->name;
+// 		name2->name = temp;
+// 	}
+// }
+
+
+
+// void			sort_time(t_dir *names, int len)
+// {
+// 	time_t			ftm[len];
+// 	int				i;
+// 	int				j;
+
+// 	match_times(names, ftm);
+// 	i = 0;
+// 	j = 0;
+// 	while (j++ < len)
+// 	{
+// 		while (i < len - 1)
+// 		{
+// 			if (ftm[i] < ftm[i + 1])
+// 				swap_tsec(&names[i], &names[i + 1], &ftm[i], &ftm[i + 1]);
+// 			else if (ftm[i] == ftm[i + 1])
+// 				swap_tnsec(&names[i], &names[i + 1]);
+// 			i++;
+// 		}
+// 		i = 0;
+// 	}
+// }
+
+
+// void	swap(t_dir *d_name, int index)
+// {
+// 	char *temp;
+
+// 	temp = ft_strnew(ft_strlen(d_name[index].name));
+// 	ft_strcpy(temp, d_name[index].name);
+// 	free(d_name[index].name);
+// 	d_name[index].name = ft_strnew(ft_strlen(d_name[index + 1].name));
+// 	ft_strcpy(d_name[index].name, d_name[index + 1].name);
+// 	free(d_name[index + 1].name);
+// 	d_name[index + 1].name = ft_strnew(ft_strlen(temp));
+// 	ft_strcpy(d_name[index + 1].name, temp);
+// 	free(temp);
+// }
+
 /*
-	Helper function for our sort ascii method to swap values 
-	based on their ascii value 
+**	Helper function for our sort ascii method to swap values 
+**	based on their ascii value 
 */
 
 t_dir	*lst_swap(t_dir *value_1, t_dir *value_2)
@@ -27,8 +111,8 @@ t_dir	*lst_swap(t_dir *value_1, t_dir *value_2)
 
 
 /*
-	Method to sort values in accending order according to their 
-	ascii values 
+**	Method to sort values in accending order according to their 
+**	ascii values 
 */
 
 static t_dir	*sort_ascii(t_dir *list)
@@ -72,7 +156,6 @@ char		*get_name(t_dir *list)
 	when we use -r with ft_ls
 */
 
-// draw a pic here of how this works
 void		reverse_list(struct s_dir **head_ref, unsigned char flags)
 {
 	struct s_dir *prev;
@@ -100,111 +183,10 @@ void		reverse_list(struct s_dir **head_ref, unsigned char flags)
 }
 
 
-//see where i use this and how it works
-// this method we sort but we sort the modified time
-t_dir		*sort_merge_time(t_dir *a, t_dir *b, unsigned int flag)
-{
-	t_dir *result;
-
-	result = NULL;
-	if (a == NULL)
-		return (b);
-	else if (b == NULL)
-		return (a);
-	if (a->mtime > b->mtime && !(flag & 8))
-	{
-		result = a;
-		result->next = sort_merge_time(a->next, b, flag);
-	}
-	else if (a->mtime < b->mtime && flag & 8)
-	{
-		result = a;
-		result->next = sort_merge_time(a->next, b, flag);
-	}
-	else
-	{
-		result = b;
-		result->next = sort_merge_time(a, b->next, flag);
-	}
-	return (result);
-}
-
-//see where i use this and how it works
 
 
 
-void		merge_sort(t_dir **head_ref, unsigned char flags)
-{
-	t_dir *head;
-	t_dir *a;
-	t_dir *b;
-
-	head = *head_ref;
-	if ((head == NULL) || (head->next == NULL))
-		return ;
-	inverse_split(head, &a, &b);
-	merge_sort(&a, flags);
-	merge_sort(&b, flags);
-
-	if (flags & 16)
-		*head_ref = sort_merge_time(a, b, flags);
-	else
-		*head_ref = sort_merge_list(a, b, flags);
-}
 
 
 
-t_dir		*sort_merge_list(t_dir *a, t_dir *b, unsigned char flags)
-{
-	t_dir *result;
 
-	result = NULL;
-	if (a == NULL)
-		return (b);
-	
-	else if (b == NULL)
-		return (a);
-	if (!(flags & 8) && ((ft_strcmp(a->name, b->name)) < 0))
-	{
-		result = a;
-		result->next = sort_merge_list(a->next, b, flags);
-	}
-	else if ((flags & 8) && ((ft_strcmp(a->name, b->name)) > 0))
-	{
-		result = a;
-		result->next = sort_merge_list(a->next, b, flags);
-	}
-	else
-	{
-		result = b;
-		result->next = sort_merge_list(a, b->next, flags);
-	}
-	return (result);
-}
-
-/*
-	A method where we
-*/
-
-//ask , when we do this are we just getting the values of the first and last index?
-// change name to get halves
-void		inverse_split(t_dir *source, t_dir **front_ref, t_dir **back_ref)
-{
-	t_dir *fast;
-	t_dir *slow;
-
-	slow = source;
-	fast = source->next;
-	while (fast != NULL)
-	{
-		fast = fast->next;
-		if (fast != NULL)
-		{
-			slow = slow->next;
-			fast = fast->next;
-		}
-	}
-	*front_ref = source;
-	*back_ref = slow->next;
-	slow->next = NULL;
-}

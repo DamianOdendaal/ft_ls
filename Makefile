@@ -21,19 +21,19 @@ HEADERS = -I./includes -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Werror -Wextra $(HEADERS)
 CC = gcc -g
 
-SOURCES = convert.c error_handling.c flags.c ft_ls.c listing.c\
-			output.c list_init.c output2.c recursion.c sorting.c\
+SOURCES = convert.c error_handling.c flags.c ft_ls.c \
+			output.c list_handling.c recursion.c sorting.c\
 
 OBJECTS = $(addprefix $(OBJS_D)/,$(SOURCES:.c=.o))
 
 $(OBJS_D)/%.o: $(SRCS_D)/%.c libft/libft.h includes/*
-	@echo "\033[1;35;m[Compiling $<] \t\033[0m"
+	@echo "[Compiling $<] "
 	@$(CC) $(CFLAGS) -o $@ -c $<
 
 $(NAME): dir $(OBJECTS)
 	@make -C $(LIBFT_DIR)
 	@$(CC) $(CFLAGS) $(OBJECTS) -o $(NAME) $(LIB) 
-	@echo "\033[1;32;mft_ls ready to use! \t\033[0m"
+	@echo "ft_ls ready to use! "
 
 all: dir $(NAME)
 

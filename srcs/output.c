@@ -6,11 +6,48 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/12 21:43:38 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/14 09:02:20 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
+
+
+
+// when do we use this method?
+void	ft_linkprint(char *path, t_dir *ptr)
+{
+	char		buffer[65];
+	char		*tpath;
+	char		*tmp;
+
+	ft_bzero(&buffer, 65);
+	tmp = ft_strjoin(path, "/");
+	tpath = ft_strjoin(tmp, ptr->name);
+	ft_strdel(&tmp);
+
+	readlink(tpath, buffer, 65);
+	ft_putstr(" -> ");
+	ft_putstr(buffer);
+	ft_strdel(&tpath);
+}
+
+void	display_blocks(t_dir *ptr, unsigned char flags)
+{
+	int i;
+
+	i = 0;
+	ft_putstr("total ");
+	while (ptr)
+	{
+		if ((ptr->name[0] == '.' && flags & 2) || ptr->name[0] != '.')
+			i += ptr->block;
+		ptr = ptr->next;
+	}
+	ft_putnbr(i);
+	ft_putstr("\n");
+}
+
 
 // changw this method to only take in the t_dir and print the name
 // take out the flags parameter here and alll other places then make it putstr only
@@ -187,6 +224,8 @@ void	standard_out(t_dir *list, unsigned char flags)
 		{
 			ft_putstr(dir_ptr->name);
 			ft_putchar('\t');
+			if (dir_ptr->next == NULL)
+					ft_putchar('\n');
 			dir_ptr = dir_ptr->next;
 		}
 		else
@@ -203,15 +242,28 @@ void	standard_out(t_dir *list, unsigned char flags)
 	}
 }
 
+int node_count(t_dir* head) 
+{ 
+    int count;   
+    
+    t_dir* current = head; 
+    count = 0; 
+    while (current != NULL) 
+    { 
+        count++; 
+        current = current->next; 
+    } 
+    return count; 
+} 
+
 void	print_output(t_dir *list, unsigned char flags, char *path)
 {
 	t_dir	*result;
+	size_t 	len;
 	if (flags & 1)
+	// do a check that if long and r are on then we must reverse then pass that list to this method
 		print_list(list, flags, path);
-	else if (flags & 2)
-	{
 
-	}
 	else if (flags & 8)
 	{
 		result = sort(list);
@@ -220,6 +272,15 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 	}
 	else if (flags & 32)
 		supress_owner_print_list(list, flags, path);
+
+		// test if this works when you get back 
+	else if (flags & 16)
+	{
+		len = node_count(list);
+		sort_time(list, len);
+	}
+		// t_sorting(list);
+	// merge_sort(&list, flags);
 
 	else if (flags & 64)
 	{
