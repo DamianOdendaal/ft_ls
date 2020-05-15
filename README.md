@@ -14,5 +14,4 @@ Reverse sort: -r
 Sort by modification date: -t
 Suppress owner: -g
 Display one entry per line: -1(bonus)
-Column display: -C (Set by default)
-Sort by last status change date: -c
+
