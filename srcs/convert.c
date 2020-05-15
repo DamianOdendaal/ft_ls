@@ -6,13 +6,17 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:44 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/07 20:54:49 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 18:18:21 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-//convert username
+/*
+**		Method used to convert something that is 
+**		of type struct passwd into a string
+*/
+
 char		*username_to_string(int uid)
 {
 	// write out variables names
@@ -26,7 +30,11 @@ char		*username_to_string(int uid)
 	return (NULL);
 }
 
-// convert group name
+/*
+**		Method used to convert something that is 
+**		of type struct group into a string
+*/
+
 char		*groupName_to_string(int gib)
 {
 	struct group *grp;
@@ -39,10 +47,11 @@ char		*groupName_to_string(int gib)
 	return (NULL);
 }
 
+/*
+**	Method that is used to convert the 
+**	full date and time o
+*/
 
-//ask Anda bout this
-// where do i use this --> output.c 
-// add header
 void		convert_date(char *str)
 {
 	char	ret[14];
@@ -53,10 +62,6 @@ void		convert_date(char *str)
 	i = 4;
 	ft_strcpy(ret, "000  0 00:00 ");
 	while (i < 16)
-	{
-		ret[j] = str[i];
-		j++;
-		i++;
-	}
+		ret[j++] = str[i++];
 	ft_putstr(ret);
 }

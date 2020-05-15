@@ -6,11 +6,19 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/14 08:32:32 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:32:14 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
+
+/*
+**	This is the method where we take in the contents 
+**	from the directory we would like to list 
+**	store it in a list and do what needs to be done 
+**	based on the flags that are given
+*/
+
 void	ft_ls(char *d_path, unsigned char flags)
 {
 	DIR				*dire;
@@ -30,18 +38,16 @@ void	ft_ls(char *d_path, unsigned char flags)
 			list_add(&content, entries, d_path);
 	}
 	closedir(dire);
-	
-	if (flags & 16)
-		merge_sort(&content, flags);
-	
 	print_output(content, flags, d_path);
 	delete_list(&content);
 }
 
 
-//change implement to confirm
+/*
+**
+*/
 
-int		check_arguments(int ac, char *av[], unsigned char flags)
+int		confirm_args(int ac, char *av[], unsigned char flags)
 {
 	int i;
 	int check;
@@ -68,13 +74,14 @@ int		main(int ac, char *av[])
 	int				check;
 
 	check = 0;
-	flags = obtain_flags(ac, av);
+	flags = inspect_flags(ac, av);
 	if (ac == 1)
 		ft_ls(".", flags);
 	else
 	{
-		check = check_arguments(ac, av, flags);
-		(check == 0) ? ft_ls(".", flags) : 0;
+		check = confirm_args(ac, av, flags);
+		if (check == 0)
+			ft_ls(".", flags);
 	}
 	return (0);
 }

@@ -6,15 +6,20 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:50:39 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/12 22:14:16 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 18:42:06 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
 
-// change from inspect to set 
-int				inspect_flags(char c)
+/*
+**		Init flags is here to initialise a value to 
+**		each individual flag and to allow us to make 
+**		use of bit manipulation later in our code
+*/  
+
+int				init_flags(char c)
 {
 
 	if (c == 'l')
@@ -34,13 +39,25 @@ int				inspect_flags(char c)
 	return (0);
 }
 
-unsigned char	get_flags(unsigned char flags)
+
+/*
+**		Not found is a helper method for when we find 
+**		a case where we dont give any options to our ls 
+**		so we print the needed error and return the flags
+*/
+
+unsigned char	not_found(unsigned char flags)
 {
-	//what is diffile_error
-	// change method name according to what dirfile error does
-	dirfile_error("-");
+	no_where_to_be_found("-");
 	return (flags);
 }
+
+
+/*
+**		This is for the cases when people try to 
+**		enter values that our project does not 
+**		cater for 
+*/
 
 void			illegal_options(char ch)
 {
@@ -50,18 +67,24 @@ void			illegal_options(char ch)
 	exit(1);
 }
 
+/*
+**		Method used to make sure that our flags
+**		are set	
+*/
+
 int				inspect(char ch)
 {
-	if (inspect_flags(ch) != 0)
-		return (1);
-	else
-		return (0);
+	return (init_flags(ch) != 0);
 }
 
 
+/*
+**		Inspect flags is here so that we can know what was given in 
+** 		as arguments and then according to the flag that was passed in
+**		we will know what needs to be done
+*/
 
-
-unsigned char	obtain_flags(int ac, char *av[])
+unsigned char	inspect_flags(int ac, char *av[])
 {
 	int				i;
 	int				j;
@@ -76,10 +99,10 @@ unsigned char	obtain_flags(int ac, char *av[])
 		{
 			j++;
 			if (av[i][1] == '\0')
-				return (get_flags(flags));
+				return (not_found(flags));
 			while (inspect(av[i][j]) == 1)
-				flags |= inspect_flags(av[i][j++]);
-			if (inspect_flags(av[i][j]) == 0 && av[i][j] != '\0')
+				flags |= init_flags(av[i][j++]);
+			if (init_flags(av[i][j]) == 0 && av[i][j] != '\0')
 				illegal_options(av[i][j]);
 		}
 		else

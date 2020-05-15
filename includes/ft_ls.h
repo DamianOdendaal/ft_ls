@@ -35,7 +35,8 @@ typedef struct		s_dir
 	mode_t			mode;
 	nlink_t			nlink;
 	off_t			size;
-	time_t			mtime;
+	time_t			ntime;
+	time_t			time;
 	struct s_dir	*next;
 }					t_dir;
 
@@ -60,29 +61,32 @@ void				root_out(struct dirent *de, unsigned char flags,
 						DIR *dr);
 void				recursive_print(struct dirent *de, unsigned char flags,
 						char *path);
-unsigned char		obtain_flags(int ac, char *av[]);
+unsigned char		inspect_flags(int ac, char *av[]);
 void				ft_ls(char *d_path, unsigned char flags);
 void				recursion(t_dir *list, unsigned char flags, char *path);
 char				*username_to_string(int uid);
 char				*groupName_to_string(int gib);
 void				print_list(t_dir *list, unsigned char flags, char *path);
-void				standard_out(t_dir *list, unsigned char flags);
+void				normal_print(t_dir *list, unsigned char flags);
 void				print_output(t_dir *list, unsigned char flags, char *path);
 void				inverse_split(t_dir *source, t_dir **front_ref,
 						t_dir **back_ref);
 void				merge_sort(t_dir **head_ref, unsigned char flags);
 
-void				dirfile_error(char *path);
+void				no_where_to_be_found(char *path);
 void				ft_linkprint(char *path, t_dir *ptr);
 void				display_blocks(t_dir *ptr, unsigned char flags);
 void				reverse_list(struct s_dir	**head_ref,  unsigned char flags);
 t_dir				*sort_merge_list(t_dir *a, t_dir *b, unsigned char flags);
 t_dir				*list_init(struct dirent *de, char *path);
-void				long_print_no_owner(t_dir *lst, char *path, unsigned char flags);
+void				long_print_no_owner(t_dir *lst, char *path);
 t_dir				*sort(t_dir *unsorted);
 t_dir				*ft_alpha_sort(t_dir *list, unsigned char flags);
 int 				get_list_length(t_dir *list);
-void				sort_time(t_dir *names, int len);
+t_dir				*sort_time(t_dir *lst);
+int	        		sort_list(t_dir **begin, short flags);
+t_dir				*lst_swap(t_dir *value1, t_dir *value2);
+void 				quick_print_list(t_dir *head, unsigned char flags);
 
 
 

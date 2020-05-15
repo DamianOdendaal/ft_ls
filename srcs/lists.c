@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_init.c                                        :+:      :+:    :+:   */
+/*   list_handling.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/11 20:12:25 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 09:00:17 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_dir	*list_init(struct dirent *de, char *path)
 	new->size = sb.st_size;
 	new->type = de->d_type;
 	new->mode = sb.st_mode;
-	new->mtime = sb.st_mtime;
+	new->ntime = sb.st_mtime;
 	new->block = sb.st_blocks;
 	new->next = NULL;
 	free(tmp);
