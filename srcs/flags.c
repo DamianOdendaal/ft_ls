@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:50:39 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 18:42:06 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:41:50 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ unsigned char	inspect_flags(int ac, char *av[])
 			j++;
 			if (av[i][1] == '\0')
 				return (not_found(flags));
+				
 			while (inspect(av[i][j]) == 1)
 				flags |= init_flags(av[i][j++]);
 			if (init_flags(av[i][j]) == 0 && av[i][j] != '\0')

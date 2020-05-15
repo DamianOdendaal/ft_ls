@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 23:26:41 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 09:13:47 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 20:44:48 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,30 @@ t_dir	*lst_swap(t_dir *value1, t_dir *value2)
 **      -t flag
 */
 
-t_dir	*ft_sort_time(t_dir *lst)
+t_dir	*sort_time(t_dir *lst)
 {
 	if (!lst)
 		return (NULL);
+
 	if (lst->next && (lst->time < lst->next->time))
 		lst = lst_swap(lst, lst->next);
-	else if (lst->next && lst->time == lst->next->time)
-		if (lst->next && (lst->ntime < lst->next->ntime))
+
+	if (lst->next && (lst->ntime < lst->next->ntime))
 			lst = lst_swap(lst, lst->next);
-	lst->next = ft_sort_time(lst->next);
+
+	lst->next = sort_time(lst->next);
 	if (lst->next && (lst->time < lst->next->time))
 	{
 		lst = lst_swap(lst, lst->next);
-		lst->next = ft_sort_time(lst->next);
+		lst->next = sort_time(lst->next);
 	}
+	
 	else if (lst->next && lst->time == lst->next->time)
 	{
 		if (lst->next && (lst->ntime < lst->next->ntime))
 		{
 			lst = lst_swap(lst, lst->next);
-			lst->next = ft_sort_time(lst->next);
+			lst->next = sort_time(lst->next);
 		}
 	}
 	return (lst);
@@ -62,7 +65,7 @@ int	        sort_list(t_dir **begin, short flags)
 {
 	*begin = sort(*begin);
 	if (flags & 16)
-		*begin = ft_sort_time(*begin);
+		*begin = sort_time(*begin);
 	return (1);
 }
 

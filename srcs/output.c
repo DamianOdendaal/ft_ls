@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 18:14:16 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 20:47:25 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,45 @@ int node_count(t_dir* head)
     return count; 
 } 
 
+/*
+**		A method that calls our time sorting function
+**		on a list and returns the sorted list
+*/
+
+t_dir	    *quick_sort_time(t_dir **begin, short flags)
+{
+	*begin = sort(*begin);
+	if (flags & 16)
+		*begin = sort_time(*begin);
+	return (*begin);
+}
+
+/*
+**		The method that will be called to do the long print format 
+**		with permissions, user and group owner , file size in 
+**		bytes , the time the content that is being listed was 
+**		last modified and finally the name of the file
+*/
+
+void	time_print_list(t_dir *list, unsigned char flags, char *path)
+{
+	t_dir *ptr;
+	t_dir *ptr2;
+
+	ptr = quick_sort_time(&list, flags);
+	ptr2 = quick_sort_time(&list, flags);
+	if (flags & 1)
+		display_blocks(ptr2, flags);
+	while (ptr != NULL)
+	{
+		if (flags & 2)
+			long_print_format(ptr, path);
+		else if (ft_strncmp(ptr->name, ".", 1) != 0)
+			long_print_format(ptr, path);
+		ptr = ptr->next;
+	}
+}	
+
 
 /*
 **		Print output is a method that does the part that we see
@@ -307,7 +346,9 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 {
 	t_dir	*result;
 
-	if (flags & 1)
+	if ((flags & 1) && (flags & 16))
+		time_print_list(list, flags, path);
+	else if (flags & 1)
 		print_list(list, flags, path);
 
 	else if (flags & 8)
@@ -319,6 +360,7 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 	else if (flags & 32)
 		supress_owner_print_list(list, flags, path);
 
+		
 	else if (flags & 16)
 	{
 		sort_list(&list, flags);

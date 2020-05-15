@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 19:32:14 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:41:53 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,11 @@ void	ft_ls(char *d_path, unsigned char flags)
 
 
 /*
-**
+**		confirm args is a method used to confirm what was
+**		given in,  there are 3 return values. If the method 
+**		returns 0 we didn't encounter any issues. If the method 
+**		returns 1 then we are not using a valid option. If the method
+**		returns 2 then we have passed no flags after the - 
 */
 
 int		confirm_args(int ac, char *av[], unsigned char flags)
@@ -67,6 +71,10 @@ int		confirm_args(int ac, char *av[], unsigned char flags)
 	}
 	return (check);
 }
+
+
+
+
 
 int		main(int ac, char *av[])
 {

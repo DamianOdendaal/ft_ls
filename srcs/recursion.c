@@ -6,11 +6,18 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:26 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/07 20:54:41 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:49:43 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
+
+/*
+**		Recursion we try to take in the path then list what 
+**		is in the current directory then append the '/' char to 
+**		the current dirs name and append the new path we will be
+**		branching into and begin the process again 
+*/
 
 void	recursion(t_dir *list, unsigned char flags, char *path)
 {

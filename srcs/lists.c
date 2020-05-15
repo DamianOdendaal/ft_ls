@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_handling.c                                    :+:      :+:    :+:   */
+/*   lists.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 09:00:17 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/15 19:47:21 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
-// change to initialize list 
+/*
+**	list init is the method that allows us to create a 
+**	new list so that we are able to store the data that we 
+**	will have to sort and later print back to the stdout 
+*/
 
 t_dir	*list_init(struct dirent *de, char *path)
 {
@@ -41,6 +45,12 @@ t_dir	*list_init(struct dirent *de, char *path)
 	return (new);
 }
 
+/*
+**		After creating a list and using malloc to allocate memory 
+**		for data to be stored in the list we are going to need to 
+**		deallocate the memory. We create a method that free's all of the 
+**		data in the list then make it point to null
+*/
 
 void	delete_list(t_dir **list)
 {
@@ -57,6 +67,12 @@ void	delete_list(t_dir **list)
 	}
 	*list = NULL;
 }
+
+/*
+**	List add allows us to create a new list and store 
+**	the needed data in the list if there was not a list that 
+** 	was existent already
+*/
 
 void	list_add(t_dir **alst, struct dirent *de, char *path)
 {
