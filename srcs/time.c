@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/14 23:26:41 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 17:02:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:38:19 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,17 @@ t_dir	*sort_time(t_dir *lst)
 	return (lst);
 }
 
+
+
+
+/*
+**		Method used to add a new node to the linked list that 
+** 		we are working with 
+*/
+
 void    ft_thelstadd(t_dir **alst, t_dir *new)
 {
-    
+
     if (new)
     {
         new->next = *alst;
@@ -99,8 +107,8 @@ void	sort_list(t_dir **begin, short flags)
 		content_name = get_last_name(*begin);
     	newNode->name = content_name; 
 		newNode->next = NULL; 
-		// printf("this is the content name ->%s\n", content_name);
 		ft_thelstadd(begin, newNode);
+		
 	}
 }
 

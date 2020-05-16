@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:44 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 16:54:40 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:37:39 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 
 char		*username_to_string(int uid)
 {
-	// write out variables names
 	struct passwd	*pwd;
 
 	pwd = getpwuid(uid);
 	if (pwd == NULL)
-		perror("getpwuid");
+		perror("An error has occured using getpwuid");
 	else
 		return (pwd->pw_name);
 	return (NULL);
 }
+
 
 /*
 **		Method used to convert something that is 
@@ -41,7 +41,7 @@ char		*groupName_to_string(int gib)
 
 	grp = getgrgid(gib);
 	if (grp == NULL)
-		perror("getgid");
+		perror("An error has occured using getgid");
 	else
 		return (grp->gr_name);
 	return (NULL);
