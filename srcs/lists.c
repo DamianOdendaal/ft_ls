@@ -6,15 +6,17 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 19:47:21 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 16:58:26 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
 
+
+
 /*
 **	list init is the method that allows us to create a 
-**	new list so that we are able to store the data that we 
+**	new list so that we are able to store the name that we 
 **	will have to sort and later print back to the stdout 
 */
 
@@ -47,9 +49,9 @@ t_dir	*list_init(struct dirent *de, char *path)
 
 /*
 **		After creating a list and using malloc to allocate memory 
-**		for data to be stored in the list we are going to need to 
+**		for name to be stored in the list we are going to need to 
 **		deallocate the memory. We create a method that free's all of the 
-**		data in the list then make it point to null
+**		name in the list then make it point to null
 */
 
 void	delete_list(t_dir **list)
@@ -70,7 +72,7 @@ void	delete_list(t_dir **list)
 
 /*
 **	List add allows us to create a new list and store 
-**	the needed data in the list if there was not a list that 
+**	the needed name in the list if there was not a list that 
 ** 	was existent already
 */
 

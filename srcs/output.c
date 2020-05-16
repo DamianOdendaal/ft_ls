@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 20:47:25 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:04:44 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,12 +233,12 @@ void quick_print_list(t_dir *head, unsigned char flags)
 		}
       	ft_putstr(current->name);
 		ft_putchar('\t');
-        current = current->next;
 		if (current->next == NULL)
 		{
 			ft_putchar('\n');
 			break;
 		}
+        current = current->next;
     }
 }
 

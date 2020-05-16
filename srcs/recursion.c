@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:26 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/15 19:49:43 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 16:58:28 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	recursion(t_dir *list, unsigned char flags, char *path)
 	if (flags & 4)
 		while (ptr != NULL)
 		{
-			if ((ptr->type == 4) && (ft_strcmp(ptr->name, ".") != 0)
-			&& (ft_strcmp(ptr->name, "..") != 0))
+			if ((ft_strcmp(ptr->name, ".") != 0) && (ft_strcmp(ptr->name, "..") \
+			 != 0))
 			{
 				if (!(flags & 2) && (ptr->name[0] == '.'))
 				{

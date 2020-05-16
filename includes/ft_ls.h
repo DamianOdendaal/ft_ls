@@ -38,19 +38,8 @@ typedef struct		s_dir
 	time_t			ntime;
 	time_t			time;
 	struct s_dir	*next;
+	struct s_dir	*prev;
 }					t_dir;
-
-// typedef	enum e_flags
-// {
-// 	f_0 = 0,
-// 	f_a = 1,
-// 	f_l = 2,
-// 	f_r = 4,
-// 	f_R = 8,
-// 	f_t = 16,
-// 	f_1 = 32, 
-// }			t_flags;
-
 
 
 int					error_handle(char *path, DIR *d_path, int ierrno);
@@ -84,10 +73,13 @@ t_dir				*sort(t_dir *unsorted);
 t_dir				*ft_alpha_sort(t_dir *list, unsigned char flags);
 int 				get_list_length(t_dir *list);
 t_dir				*sort_time(t_dir *lst);
-int	        		sort_list(t_dir **begin, short flags);
+void        		sort_list(t_dir **begin, short flags);
 t_dir				*lst_swap(t_dir *value1, t_dir *value2);
 void 				quick_print_list(t_dir *head, unsigned char flags);
 
 
 
 #endif
+
+
+

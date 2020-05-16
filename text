@@ -1,0 +1,42 @@
+
+
+t_dir	*lst_swap(t_dir *value1, t_dir *value2)
+{
+	if (value1->prev != NULL)
+		value1->prev->next = value2;
+	value2->prev = value1->prev;
+	value1->prev = value2;
+	value1->next = value2->next;
+	if (value2->next != NULL)
+		value2->next->prev = value1;
+	value2->next = value1;
+	return (value2);
+}
+
+t_dir	*sort_time(t_dir *lst)
+{
+	t_dir	*value1;
+
+	value1 = lst;
+	while (value1->next != NULL)
+	{
+		if (value1->ttime < value1->next->ttime)
+		{
+			value1 = lst_swap(value1, value1->next);
+			value1 = lst;
+		}
+		else if (value1->ttime == value1->next->ttime)
+		{
+			if (value1->ntime < value1->next->ntime)
+			{
+				value1 = lst_swap(value1, value1->next);
+				value1 = lst;
+			}
+			else
+				value1 = value1->next;
+		}
+		else
+			value1 = value1->next;
+	}
+	return (lst);
+}
