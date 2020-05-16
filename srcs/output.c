@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 17:18:04 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 20:19:24 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,7 @@ void quick_print_list(t_dir *head, unsigned char flags)
 
     while (current != NULL) 
 	{
-		if ((!(flags & 2)) && (current->name[0] == '.'))
+		if (!(flags & 2) && (current->name[0] == '.'))
 		{
 			current = current->next;
 			continue;
@@ -380,7 +380,8 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 		
 	else if (flags & 16)
 	{
-		sort_list(&list, flags);
+		result = sort(list);
+		sort_list(&result, flags);
 		quick_print_list(list, flags);
 	}
 	else if (flags & 64)

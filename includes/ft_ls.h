@@ -35,7 +35,7 @@ typedef struct		s_dir
 	mode_t			mode;
 	nlink_t			nlink;
 	off_t			size;
-	time_t			ntime;
+	long			ntime;
 	time_t			time;
 	struct s_dir	*next;
 	struct s_dir	*prev;
