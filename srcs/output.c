@@ -6,11 +6,12 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 17:04:44 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 17:16:10 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
+
 
 
 
@@ -335,6 +336,19 @@ void	time_print_list(t_dir *list, unsigned char flags, char *path)
 	}
 }	
 
+/*
+**		A method used for the -a flag,  gets all values
+**		sorts them lexographically and prints them
+*/
+
+void	all_printer(t_dir *list, unsigned char flags)
+{
+	t_dir *sorted;
+
+	sorted = sort(list);
+	quick_print_list(sorted, flags);
+}
+
 
 /*
 **		Print output is a method that does the part that we see
@@ -350,6 +364,9 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 		time_print_list(list, flags, path);
 	else if (flags & 1)
 		print_list(list, flags, path);
+
+	else if (flags & 2)
+		all_printer(list, flags);
 
 	else if (flags & 8)
 	{

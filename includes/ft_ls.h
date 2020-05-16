@@ -60,13 +60,11 @@ void				normal_print(t_dir *list, unsigned char flags);
 void				print_output(t_dir *list, unsigned char flags, char *path);
 void				inverse_split(t_dir *source, t_dir **front_ref,
 						t_dir **back_ref);
-void				merge_sort(t_dir **head_ref, unsigned char flags);
 
 void				no_where_to_be_found(char *path);
 void				ft_linkprint(char *path, t_dir *ptr);
 void				display_blocks(t_dir *ptr, unsigned char flags);
 void				reverse_list(struct s_dir	**head_ref,  unsigned char flags);
-t_dir				*sort_merge_list(t_dir *a, t_dir *b, unsigned char flags);
 t_dir				*list_init(struct dirent *de, char *path);
 void				long_print_no_owner(t_dir *lst, char *path);
 t_dir				*sort(t_dir *unsorted);
