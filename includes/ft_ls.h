@@ -91,30 +91,4 @@ t_dir			*sort(t_dir *unsorted);
 void			reverse_list(struct s_dir **head_ref, unsigned char flags);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #endif
-
-
-
