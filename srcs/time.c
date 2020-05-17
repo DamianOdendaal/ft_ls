@@ -77,6 +77,8 @@ t_dir	*sort_time(t_dir *lst)
 		lst = lst_swap(lst, lst->next);
 		lst->next = sort_time(lst->next);
 	}
+
+	
 	else if (lst->next && lst->time == lst->next->time)
 	{
 		if (lst->next && (lst->ntime < lst->next->ntime))

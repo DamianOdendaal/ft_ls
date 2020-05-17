@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/17 14:31:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 16:17:05 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_ls(char *d_path, unsigned char flags)
 	DIR				*dire;
 	struct dirent	*entries;
 	t_dir			*content;
-	// t_stat          *stat;
 
 	content = NULL;
 	entries = NULL;
@@ -34,7 +33,8 @@ void	ft_ls(char *d_path, unsigned char flags)
 	while ((entries = readdir(dire)))
 	{
 		if (!content)
-			content = list_init(entries, d_path);
+			content = create_ls_node(entries, d_path);
+
 		else
 			list_add(&content, entries, d_path);
 	}

@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/17 14:18:47 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 17:12:32 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,9 @@ void	show_block(t_dir *ptr, unsigned char flags)
 			i += ptr->block;
 		ptr = ptr->next;
 	}
-	ft_putnbr(i);
+	ft_putnbr(i/2);
 	ft_putstr("\n");
+	
 }
 
 
@@ -75,6 +76,11 @@ void quick_print_list(t_dir *head, unsigned char flags)
 
     while (current != NULL) 
 	{
+		if (current->next == NULL)
+		{
+			ft_putchar('\n');
+			break;
+		}
 		if (!(flags & 2) && (current->name[0] == '.'))
 		{
 			current = current->next;
@@ -83,11 +89,6 @@ void quick_print_list(t_dir *head, unsigned char flags)
       	ft_putstr(current->name);
 		ft_putchar('\t');
         current = current->next;
-		if (current->next == NULL)
-		{
-			ft_putchar('\n');
-			break;
-		}
     }
 }
 
@@ -103,13 +104,13 @@ void quick_print_l(t_dir *head, unsigned char flags)
 			current = current->next;
 			continue;
 		}
-      	ft_putstr(current->name);
-		ft_putchar('\t');
 		if (current->next == NULL)
 		{
 			ft_putchar('\n');
 			break;
 		}
+      	ft_putstr(current->name);
+		ft_putchar('\t');
         current = current->next;
     }
 }
@@ -148,26 +149,6 @@ void	normal_print(t_dir *list, unsigned char flags)
 		}
 	}
 }
-
-// /*
-// **		Node count is our version of strlen but for a list
-// **		we count the number of nodes and return that int value
-// */
-
-// int node_count(t_dir* head) 
-// { 
-//     int count;   
-    
-//     t_dir* current = head; 
-//     count = 0; 
-//     while (current != NULL) 
-//     { 
-//         count++; 
-//         current = current->next; 
-//     } 
-//     return count; 
-// } 
-
 
 
 /*
@@ -224,27 +205,22 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 		time_print_list(list, flags, path);
 	else if (flags & 1)
 		print_list(list, flags, path);
-
-
-
 	else if (flags & 2)
 		all_printer(list, flags);
-
 	else if (flags & 8)
 	{
 		result = sort(list);
 		reverse_list(&result, flags);
+
 		quick_print_list(result, flags);
 	}
 	else if (flags & 32)
 		supress_owner_print_list(list, flags, path);
-		
 	else if (flags & 16)
 	{
 		sort_list(&list, flags);
 		quick_print_list(list, flags);
 	}
-	
 	else if (flags & 64)
 	{
 		result = sort(list);

@@ -29,16 +29,7 @@
 # include <errno.h>
 # include "../libft/libft.h"
 
-#if defined _NETBSD_SOURCE
-# define st_atim               st_atimespec.tv_sec
-# define st_atimensec            st_atimespec.tv_nsec
-# define st_mtim                st_mtimespec.tv_sec
-# define st_mtimensec            st_mtimespec.tv_nsec
-# define st_ctim                st_ctimespec.tv_sec
-# define st_ctimensec            st_ctimespec.tv_nsec
-# define st_birthtime            st_birthtimespec.tv_sec
-# define st_birthtimensec        st_birthtimespec.tv_nsec
-#endif
+# define dodoTime st_mtim.tv_nsec 
 
 typedef struct		s_dir
 {
@@ -71,7 +62,7 @@ t_dir			*quick_sort_time(t_dir **begin, short flags);
 void			recursion(t_dir *list, unsigned char flags, char *path);
 void			supress_owner_print_list(t_dir *list, unsigned char flags, char *path);
 void			print_list(t_dir *list, unsigned char flags, char *path);
-t_dir			*list_init(struct dirent *de, char *path);
+t_dir			*create_ls_node(struct dirent *de, char *path);
 void			lst_del(t_dir **list);
 void			list_add(t_dir **alst, struct dirent *de, char *path);
 char			*username_to_string(int uid);

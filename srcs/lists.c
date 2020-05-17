@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/17 14:30:54 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 16:34:14 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 /*
 **	list init is the method that allows us to create a 
-**	new list so that we are able to store the name that we 
-**	will have to sort and later print back to the stdout 
+**	new list so that we are able to store the contents that we 
+**	will use to perform operations later in the task
 */
 
-t_dir	*list_init(struct dirent *de, char *path)
+t_dir	*create_ls_node(struct dirent *de, char *path)
 {
 	t_dir		*new;
 	struct stat	sb;
@@ -40,11 +40,8 @@ t_dir	*list_init(struct dirent *de, char *path)
 	new->type = de->d_type;
 	new->mode = sb.st_mode;
 
-	// new->ntime = sb.st_atim.tv_nsec;
-
 	new->time = sb.st_mtime;
-	new->ntime = sb.st_mtime;
-
+	new->ntime = sb.dodoTime;
 	new->block = sb.st_blocks;
 	new->next = NULL;
 	free(tmp);
@@ -76,16 +73,15 @@ void	lst_del(t_dir **list)
 }
 
 /*
-**	List add allows us to create a new list and store 
-**	the needed name in the list if there was not a list that 
-** 	was existent already
+**	List add allows us to initialize a new node
+**	and add it to an existing list
 */
 
 void	list_add(t_dir **alst, struct dirent *de, char *path)
 {
 	t_dir *new;
 
-	new = list_init(de, path);
+	new = create_ls_node(de, path);
 	new->next = *alst;
 	*alst = new;
 }
