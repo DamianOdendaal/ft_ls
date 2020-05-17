@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 16:58:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 23:50:16 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_ls(char *d_path, unsigned char flags)
 	DIR				*dire;
 	struct dirent	*entries;
 	t_dir			*content;
+	// t_stat          *stat;
 
 	content = NULL;
 	entries = NULL;

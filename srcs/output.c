@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 20:19:24 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/16 21:17:44 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,29 @@ void quick_print_list(t_dir *head, unsigned char flags)
 }
 
 
+void quick_print_l(t_dir *head, unsigned char flags) 
+{
+    t_dir *current = head;
+
+    while (current != NULL) 
+	{
+		if (!(flags & 2) && (current->name[0] == '.'))
+		{
+			current = current->next;
+			continue;
+		}
+      	ft_putstr(current->name);
+		ft_putchar('\t');
+		if (current->next == NULL)
+		{
+			ft_putchar('\n');
+			break;
+		}
+        current = current->next;
+    }
+}
+
+
 /*
 **		Normal print is the method that is called when 
 **		no flags are passed and we only run ./ft_ls
@@ -376,14 +399,13 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 	}
 	else if (flags & 32)
 		supress_owner_print_list(list, flags, path);
-
 		
 	else if (flags & 16)
 	{
-		result = sort(list);
-		sort_list(&result, flags);
+		sort_list(&list, flags);
 		quick_print_list(list, flags);
 	}
+	
 	else if (flags & 64)
 	{
 		result = sort(list);

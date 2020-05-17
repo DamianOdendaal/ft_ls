@@ -13,17 +13,32 @@
 
 #ifndef FT_LS_H
 # define FT_LS_H
+
+
+
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <dirent.h>
 # include <sys/stat.h>
+# include <fcntl.h>
 # include <sys/types.h>
 # include <grp.h>
 # include <pwd.h>
 # include <time.h>
 # include <errno.h>
 # include "../libft/libft.h"
+
+// #ifndef defined _NETBSD_SOURCE
+#define st_atim               st_atimespec.tv_sec
+#define st_atimensec            st_atimespec.tv_nsec
+#define st_mtim                st_mtimespec.tv_sec
+#define st_mtimensec            st_mtimespec.tv_nsec
+#define st_ctim                st_ctimespec.tv_sec
+#define st_ctimensec            st_ctimespec.tv_nsec
+#define st_birthtime            st_birthtimespec.tv_sec
+#define st_birthtimensec        st_birthtimespec.tv_nsec
+    // #endif
 
 typedef struct		s_dir
 {
@@ -58,14 +73,13 @@ char				*groupName_to_string(int gib);
 void				print_list(t_dir *list, unsigned char flags, char *path);
 void				normal_print(t_dir *list, unsigned char flags);
 void				print_output(t_dir *list, unsigned char flags, char *path);
-void				inverse_split(t_dir *source, t_dir **front_ref,
-						t_dir **back_ref);
+
 
 void				no_where_to_be_found(char *path);
 void				ft_linkprint(char *path, t_dir *ptr);
 void				display_blocks(t_dir *ptr, unsigned char flags);
 void				reverse_list(struct s_dir	**head_ref,  unsigned char flags);
-t_dir				*list_init(struct dirent *de, char *path);
+t_dir	            *list_init(struct dirent *de, char *path);
 void				long_print_no_owner(t_dir *lst, char *path);
 t_dir				*sort(t_dir *unsorted);
 t_dir				*ft_alpha_sort(t_dir *list, unsigned char flags);

@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 16:58:26 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 08:46:27 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,16 @@ t_dir	*list_init(struct dirent *de, char *path)
 	new->gid = groupName_to_string(sb.st_gid);
 	new->size = sb.st_size;
 	new->type = de->d_type;
+
 	new->mode = sb.st_mode;
-	new->ntime = sb.st_mtime;
+
+	
+
+	// new->ntime = sb.st_atim.tv_nsec;
+
+	new->time = sb.st_mtimensec;
+	new->ntime = st_mtimensec.tv_nsec;
+
 	new->block = sb.st_blocks;
 	new->next = NULL;
 	free(tmp);
