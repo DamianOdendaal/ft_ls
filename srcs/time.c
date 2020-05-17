@@ -15,55 +15,18 @@
 
 
 
-// void	ft_ls_sort_switch(t_dir **start, t_dir *current)
-// {
-// 	t_dir *prev;
-// 	t_dir *next;
-// 	t_dir *tmp;
+/*
+**		A method that calls our time sorting function
+**		on a list and returns the sorted list
+*/
 
-// 	prev = current->prev;
-// 	next = current->next;
-// 	tmp = next->next;
-// 	if (!prev)
-// 		*start = next;
-// 	else
-// 		prev->next = next;
-// 	if (tmp)
-// 		tmp->prev = current;
-// 	next->next = current;
-// 	next->prev = prev;
-// 	current->prev = next;
-// 	current->next = tmp;
-// }
-
-// void	ft_ls_sort_time(t_dir **start)
-// {
-// 	t_dir	*curr;
-// 	t_dir	*forward;
-// 	int		swap;
-
-// 	swap = 1;
-// 	while (swap == 1)
-// 	{
-// 		swap = 0;
-// 		curr = *start;
-// 		while (curr && curr->next)
-// 		{
-// 			forward = curr;
-// 			while (forward && forward->next)
-// 			{
-// 				if (forward->cdate < forward->next->cdate)
-// 				{
-// 					ft_ls_sort_switch(start, forward);
-// 					swap = 1;
-// 				}
-// 				forward = forward->next;
-// 			}
-// 			curr = curr->next;
-// 		}
-// 	}
-// }
-
+t_dir	    *quick_sort_time(t_dir **begin, short flags)
+{
+	*begin = sort(*begin);
+	if (flags & 16)
+		*begin = sort_time(*begin);
+	return (*begin);
+}
 
 /*
 **		Method used to get the last name index of a linked list 
@@ -126,8 +89,6 @@ t_dir	*sort_time(t_dir *lst)
 }
 
 
-
-
 /*
 **		Method used to add a new node to the linked list that 
 ** 		we are working with 
@@ -145,20 +106,10 @@ void    ft_thelstadd(t_dir **alst, t_dir *new)
 
 void	sort_list(t_dir **begin, short flags)
 {
-	// char 	*content_name;
-
 	t_dir *newNode;
 
 	newNode = (t_dir *)malloc(sizeof(newNode));
 
 	if (flags & 16)
-	{
-
 		*begin = sort_time(*begin);
-		// content_name = get_last_name(*begin);
-    	// newNode->name = content_name; 
-		// newNode->next = NULL; 
-		// ft_thelstadd(begin, newNode);
-		
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:50:39 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 16:58:24 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 14:30:52 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			illegal_options(char ch)
 {
 	ft_putstr("ft_ls: illegal option -- ");
 	ft_putchar(ch);
-	ft_3t_printer("\n", "usage: ft_ls [-Ralrt] [file ...]", "\n");
+	ft_3t_printer("\n", "usage: ft_ls [-1gRalrt] [file ...]", "\n");
 	exit(1);
 }
 

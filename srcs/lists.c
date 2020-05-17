@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/17 08:46:27 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 14:30:54 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,12 @@ t_dir	*list_init(struct dirent *de, char *path)
 	new->gid = groupName_to_string(sb.st_gid);
 	new->size = sb.st_size;
 	new->type = de->d_type;
-
 	new->mode = sb.st_mode;
-
-	
 
 	// new->ntime = sb.st_atim.tv_nsec;
 
-	new->time = sb.st_mtimensec;
-	new->ntime = st_mtimensec.tv_nsec;
+	new->time = sb.st_mtime;
+	new->ntime = sb.st_mtime;
 
 	new->block = sb.st_blocks;
 	new->next = NULL;
@@ -62,7 +59,7 @@ t_dir	*list_init(struct dirent *de, char *path)
 **		name in the list then make it point to null
 */
 
-void	delete_list(t_dir **list)
+void	lst_del(t_dir **list)
 {
 	t_dir *content;
 	t_dir *next;

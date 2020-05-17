@@ -6,7 +6,7 @@
 #    By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/17 13:32:48 by dodendaa          #+#    #+#              #
-#    Updated: 2020/05/15 14:00:51 by dodendaa         ###   ########.fr        #
+#    Updated: 2020/05/17 14:18:50 by dodendaa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ CC = gcc -g
 
 SOURCES = convert.c errors.c flags.c ft_ls.c time.c\
 			output.c lists.c recursion.c sorting.c\
+			long_printing.c long_formatting.c extra.c\
 
 OBJECTS = $(addprefix $(OBJS_D)/,$(SOURCES:.c=.o))
 

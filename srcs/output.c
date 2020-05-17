@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 21:17:44 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 14:18:47 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_linkprint(char *path, t_dir *ptr)
 **		thing we see when we run these methods
 */
 
-void	display_blocks(t_dir *ptr, unsigned char flags)
+void	show_block(t_dir *ptr, unsigned char flags)
 {
 	int i;
 
@@ -62,158 +62,6 @@ void	display_blocks(t_dir *ptr, unsigned char flags)
 }
 
 
-/*
-**		Long print format with no owner is the method called for the -g flag
-** 		here we check the permissions of the file , then the owners,
-** 		the only difference here is we dont print the list owner , only group
-*/
-
-void	long_print_no_owner(t_dir *lst, char *path)
-{
-	if ((S_ISLNK(lst->mode)))
-		ft_putstr("l");
-	else
-		ft_putstr((S_ISDIR(lst->mode)) ? "d" : "-");
-
-	ft_putstr((lst->mode & S_IRUSR) ? "r" : "-");
-	ft_putstr((lst->mode & S_IWUSR) ? "w" : "-");
-	ft_putstr((lst->mode & S_IXUSR) ? "x" : "-");
-	ft_putstr((lst->mode & S_IRGRP) ? "r" : "-");
-	ft_putstr((lst->mode & S_IWGRP) ? "w" : "-");
-	ft_putstr((lst->mode & S_IXGRP) ? "x" : "-");
-	ft_putstr((lst->mode & S_IROTH) ? "r" : "-");
-	ft_putstr((lst->mode & S_IWOTH) ? "w" : "-");
-	ft_putstr((lst->mode & S_IXOTH) ? "x " : "- ");
-	ft_putnbr(lst->nlink);
-	ft_putstr("\t");
-	ft_putstrTab(lst->gid);
-	ft_putnbr(lst->size);
-	ft_putstr("\t");
-	convert_date(ctime(&lst->ntime));
-	ft_putstr(lst->name);
-	if ((S_ISLNK(lst->mode)))
-		ft_linkprint(path, lst);
-	ft_putchar('\n');
-}
-
-/*
-**		Long print format is the method called for the -l flag
-** 		here we check the permissions of the file , then the owners,
-**		the number of links the file has. The file size in bytes and then
-** 		we print the name of the file after printing all of these details
-*/
-
-void	long_print_format(t_dir *lst, char *path)
-{
-	if ((S_ISLNK(lst->mode)))
-		ft_putstr("l");
-	else
-		ft_putstr((S_ISDIR(lst->mode)) ? "d" : "-");
-	ft_putstr((lst->mode & S_IRUSR) ? "r" : "-");
-	ft_putstr((lst->mode & S_IWUSR) ? "w" : "-");
-	ft_putstr((lst->mode & S_IXUSR) ? "x" : "-");
-	ft_putstr((lst->mode & S_IRGRP) ? "r" : "-");
-	ft_putstr((lst->mode & S_IWGRP) ? "w" : "-");
-	ft_putstr((lst->mode & S_IXGRP) ? "x" : "-");
-	ft_putstr((lst->mode & S_IROTH) ? "r" : "-");
-	ft_putstr((lst->mode & S_IWOTH) ? "w" : "-");
-	ft_putstr((lst->mode & S_IXOTH) ? "x " : "- ");
-	ft_putnbr(lst->nlink);
-	ft_putstr("\t");
-	ft_putstrTab(lst->uid);
-	ft_putstrTab(lst->gid);
-	ft_putnbr(lst->size);
-	ft_putstr("\t");
-	convert_date(ctime(&lst->ntime));
-	ft_putstr(lst->name);
-	if ((S_ISLNK(lst->mode)))
-		ft_linkprint(path, lst);
-	ft_putchar('\n');
-}
-
-/*
-**		The method that will be called to do the long print format 
-**		with permissions, user and group owner , file size in 
-**		bytes , the time the content that is being listed was 
-**		last modified and finally the name of the file
-*/
-
-void	print_list(t_dir *list, unsigned char flags, char *path)
-{
-	t_dir *ptr;
-	t_dir *ptr2;
-
-	ptr = sort(list);
-	ptr2 = sort(list);
-	if (flags & 1)
-		display_blocks(ptr2, flags);
-	while (ptr != NULL)
-	{
-		if (flags & 2)
-			long_print_format(ptr, path);
-		else if (ft_strncmp(ptr->name, ".", 1) != 0)
-			long_print_format(ptr, path);
-		ptr = ptr->next;
-	}
-}
-
-/*
-**		Similar to print list, this is the method for the -g 
-**		flag where we do the long print but we do not include 
-**		the list owner
-*/ 
-
-void	supress_owner_print_list(t_dir *list, unsigned char flags, char *path)
-{
-	t_dir *ptr;
-	t_dir *ptr2;
-
-	ptr = sort(list);
-	ptr2 = sort(list);
-	if (flags & 32)
-		display_blocks(ptr2, flags);
-	while (ptr != NULL)
-	{
-		if (flags & 2)
-			long_print_no_owner(ptr, path);
-		else if (ft_strncmp(ptr->name, ".", 1) != 0)
-			long_print_no_owner(ptr, path);
-		ptr = ptr->next;
-	}
-}
-
-
-/*
-**		This is a method for the -1 flag where we put every file 
-**		on its own line 
-*/
-
-void file_per_line(t_dir *head, unsigned char flags) 
-{
-    t_dir *current = head;
-
-    while (current != NULL) 
-	{
-	
-		if ((flags & 2))
-		{
-			ft_putstr(current->name);
-			ft_putchar('\n');
-			current = current->next;
-		}
-		else
-		{
-			if (current->name[0] != '.')
-			{
-				ft_putstr(current->name);
-				if (current->next != NULL)
-					ft_putchar('\n');
-			}
-		}
-		current = current->next;
-    }
-	ft_putchar('\n');
-}
 
 
 /*
@@ -301,37 +149,26 @@ void	normal_print(t_dir *list, unsigned char flags)
 	}
 }
 
-/*
-**		Node count is our version of strlen but for a list
-**		we count the number of nodes and return that int value
-*/
+// /*
+// **		Node count is our version of strlen but for a list
+// **		we count the number of nodes and return that int value
+// */
 
-int node_count(t_dir* head) 
-{ 
-    int count;   
+// int node_count(t_dir* head) 
+// { 
+//     int count;   
     
-    t_dir* current = head; 
-    count = 0; 
-    while (current != NULL) 
-    { 
-        count++; 
-        current = current->next; 
-    } 
-    return count; 
-} 
+//     t_dir* current = head; 
+//     count = 0; 
+//     while (current != NULL) 
+//     { 
+//         count++; 
+//         current = current->next; 
+//     } 
+//     return count; 
+// } 
 
-/*
-**		A method that calls our time sorting function
-**		on a list and returns the sorted list
-*/
 
-t_dir	    *quick_sort_time(t_dir **begin, short flags)
-{
-	*begin = sort(*begin);
-	if (flags & 16)
-		*begin = sort_time(*begin);
-	return (*begin);
-}
 
 /*
 **		The method that will be called to do the long print format 
@@ -348,7 +185,7 @@ void	time_print_list(t_dir *list, unsigned char flags, char *path)
 	ptr = quick_sort_time(&list, flags);
 	ptr2 = quick_sort_time(&list, flags);
 	if (flags & 1)
-		display_blocks(ptr2, flags);
+		show_block(ptr2, flags);
 	while (ptr != NULL)
 	{
 		if (flags & 2)
@@ -387,6 +224,8 @@ void	print_output(t_dir *list, unsigned char flags, char *path)
 		time_print_list(list, flags, path);
 	else if (flags & 1)
 		print_list(list, flags, path);
+
+
 
 	else if (flags & 2)
 		all_printer(list, flags);

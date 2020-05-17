@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 23:50:16 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/17 14:31:26 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_ls(char *d_path, unsigned char flags)
 	}
 	closedir(dire);
 	print_output(content, flags, d_path);
-	delete_list(&content);
+	recursion(content, flags, d_path);
+	lst_del(&content);
 }
 
 
