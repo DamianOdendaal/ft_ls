@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:44 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/16 17:37:39 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 12:52:47 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char		*username_to_string(int uid)
 	if (pwd == NULL)
 		perror("An error has occured using getpwuid");
 	else
-		return (pwd->pw_name);
+		return (ft_strdup(pwd->pw_name));
 	return (NULL);
 }
 
@@ -43,7 +43,7 @@ char		*groupName_to_string(int gib)
 	if (grp == NULL)
 		perror("An error has occured using getgid");
 	else
-		return (grp->gr_name);
+		return (ft_strdup(grp->gr_name));
 	return (NULL);
 }
 

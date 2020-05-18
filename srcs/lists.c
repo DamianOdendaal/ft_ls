@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/17 16:34:14 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 12:58:08 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,40 @@ t_dir	*create_ls_node(struct dirent *de, char *path)
 **		name in the list then make it point to null
 */
 
-void	lst_del(t_dir **list)
+// 
+static void node_del(t_dir *scanner)
 {
-	t_dir *content;
-	t_dir *next;
-
-	content = *list;
-	while (content)
-	{
-		next = content->next;
-		free(content->name);
-		free(content);
-		content = next;
-	}
-	*list = NULL;
+        ft_strdel(&scanner->name);
+        scanner->nlink = 0;
+        scanner->block = 0;
+        ft_strdel(&scanner->uid);
+        ft_strdel(&scanner->gid);
+        scanner->size = 0;
+        scanner->time = 0;
+        scanner->ntime = 0;
+        scanner->type = 0;
+        scanner->next = NULL;
+        free(scanner);
 }
+
+
+void    lst_del(t_dir **head)
+{
+    t_dir *scanner;
+    t_dir *next;
+
+    scanner = (*head)->next;
+	node_del(*head);
+
+    while (scanner != NULL)
+    {
+        next = scanner->next;
+		node_del(scanner);
+		scanner = next;
+    }
+
+}
+
 
 /*
 **	List add allows us to initialize a new node

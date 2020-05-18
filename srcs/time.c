@@ -108,10 +108,6 @@ void    ft_thelstadd(t_dir **alst, t_dir *new)
 
 void	sort_list(t_dir **begin, short flags)
 {
-	t_dir *newNode;
-
-	newNode = (t_dir *)malloc(sizeof(newNode));
-
 	if (flags & 16)
 		*begin = sort_time(*begin);
 }
