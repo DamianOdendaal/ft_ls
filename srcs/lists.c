@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:30 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 12:58:08 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 13:06:42 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void    lst_del(t_dir **head)
 		node_del(scanner);
 		scanner = next;
     }
+
 
 }
 

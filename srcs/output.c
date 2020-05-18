@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 12:55:46 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 13:02:41 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,29 @@ void	show_block(t_dir *ptr, unsigned char flags)
  void	quick_print_list(t_dir *list, unsigned char flags)
 {
 	
+	static t_dir 		*dir_ptr;
 
-	while (list != NULL)
+	dir_ptr = list;
+	while (dir_ptr != NULL)
 	{
 		if (flags & 2)
 		{
-			ft_putstr(list->name);
+			ft_putstr(dir_ptr->name);
 			ft_putchar('\t');
-			if (list->next == NULL)
+			if (dir_ptr->next == NULL)
 					ft_putchar('\n');
-			list = list->next;
+			dir_ptr = dir_ptr->next;
 		}
 		else
 		{
-			if (list->name[0] != '.')
+			if (dir_ptr->name[0] != '.')
 			{
-				ft_putstr(list->name);
+				ft_putstr(dir_ptr->name);
 				ft_putchar('\t');
-				if (list->next == NULL)
+				if (dir_ptr->next == NULL)
 					ft_putchar('\n');
 			}
-			list = list->next;
+			dir_ptr = dir_ptr->next;
 		}
 	}
 }
