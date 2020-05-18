@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/17 13:31:08 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 19:08:43 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 20:42:45 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ typedef long long	t_llong;
 typedef struct		s_list
 {
 	void			*content;
-	char 			*path;
+	unsigned char 	flags;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
 
 typedef  int (*t_compfunc)(void *a, void *b);
 typedef  void (*t_iter_func)(t_list *node);
-typedef  void (*t_iterdata_func)(t_list *node, void *data);
+typedef  void (*t_iterdata_func)(t_list *node, void *data, unsigned char fl);
 
 
 void				ft_lstiter_data(t_list *lst, void *data , t_iterdata_func f);

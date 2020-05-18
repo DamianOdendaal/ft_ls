@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 14:13:46 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 19:40:11 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:33:54 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,28 @@
 ** 		the only difference here is we dont print the list owner , only group
 */
 
-void	long_print_no_owner(t_list *lst, void *path)
+void	long_print_no_owner(t_list *lst, void *path, unsigned char fl)
 {
+
     t_dir *the_things;
 
-    the_things = (t_dir *)lst->content;   
+    the_things = (t_dir *)lst->content;
+	
+	if (!(fl & FLAG_a) && the_things->name[0] == '.')
+	{
+		lst = lst->next;
+	}
+	// else if ((fl & FLAG_a) && the_things->name[0] == '.')
+	// {
+	// 	// ft_putstr(the_things->name);
+	// 	// ft_putchar('\t');
+	// }
+
+
+	// if (lst->next == NULL)
+	// 	ft_putchar('\n'); 
+
+
 	if ((S_ISLNK(the_things->mode)))
 		ft_putstr("l");
 	else
@@ -39,11 +56,15 @@ void	long_print_no_owner(t_list *lst, void *path)
 ** 		we print the name of the file after printing all of these details
 */
 
-void	long_print_format(t_list *lst, void *path)
+void	long_print_format(t_list *lst, void *path, unsigned char fl)
 {
     t_dir *the_things;
 
-    the_things = (t_dir *)lst->content; 
+    the_things = (t_dir *)lst->content;
+
+	if ((!(fl & FLAG_a) && the_things->name[0] == '.' ))
+		the_things = lst->next->content;
+
 
 	if ((S_ISLNK(the_things->mode)))
 		ft_putstr("l");

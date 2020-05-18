@@ -6,27 +6,11 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:19 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 17:31:07 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 20:32:34 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_ls.h"
-
-// void 	print_name(t_list *list)
-// {
-// 	t_dir *dir;
-// 	t_dir *next;
-
-
-// 	dir = (t_dir *)list->content;
-// 	next = (t_dir *)list->next;
-	
-// 	if (next == NULL)
-// 		ft_putchar('\n');
-
-// 	ft_putstr(dir->name);
-// 	ft_putchar('\t');
-// }
 
 
 /*

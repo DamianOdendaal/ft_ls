@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:53:26 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 16:18:20 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 20:35:46 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 **      then we append the dir name and start the process over till we no longer can
 */
 
-void 	recurse(t_list *list, void *path_data)
+void 	recurse(t_list *list, void *path_data, unsigned char fl)
 {
 	t_dir *dir;
 	t_recurse_data path;
@@ -32,6 +32,7 @@ void 	recurse(t_list *list, void *path_data)
 
 
 	(void)list;
+	(void)fl;
 	path = *(t_recurse_data *)path_data;
 	dir = (t_dir *)list->content;
 	

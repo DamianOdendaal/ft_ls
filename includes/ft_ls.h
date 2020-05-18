@@ -73,8 +73,8 @@ typedef struct		s_dir
 
 t_iterdata_func	choose_print(unsigned char flags);
 
-void 			recurse(t_list *list, void *path_data);
-void 			print_name(t_list *list, void *path);
+void 			recurse(t_list *list, void *path_data, unsigned char fl);
+void 			print_name(t_list *list, void *path, unsigned char fl);
 t_compfunc 		choose_compare(unsigned char flags);
 int 			reverse_filenameCmp(void *a, void *b);
 int				filename_compare(void *a, void *b);
@@ -82,8 +82,8 @@ int				filetime_compare(void *a, void *b);
 
 void 			ft_MergeSort(t_list **headRef,  t_compfunc compare);
 void 			get_file_data(t_dir *direct, struct dirent *yah, char *path);
-void			long_print_no_owner(t_list *lst, void *path);
-void			long_print_format(t_list *lst, void *path);
+void			long_print_no_owner(t_list *lst, void *path, unsigned char fl);
+void			long_print_format(t_list *lst, void *path, unsigned char fl);
 void			ls_permissions(t_list *lst);
 void 			content_details(t_list *lst, char *path);
 void			sort_list(t_dir **begin, short flags);
@@ -120,7 +120,6 @@ void			normal_print(t_dir *list, unsigned char flags);
 void			time_print_list(t_dir *list, unsigned char flags, char *path);
 void			all_printer(t_dir *list, unsigned char flags);
 void			print_output(t_dir *list, unsigned char flags, char *path);
-t_dir			*sort(t_dir *unsorted);
 void			reverse_list(struct s_dir **head_ref, unsigned char flags);
 
 

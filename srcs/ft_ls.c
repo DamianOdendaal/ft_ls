@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 19:52:57 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 19:54:07 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:47:56 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_lstiteroptions(t_list *lst,  unsigned char option,void (*f)(t_list *elem
 	}
 }
 
-void 	print_name(t_list *list, void *path)
+void 	print_name(t_list *list, void *path, unsigned char fl)
 {
 	t_dir *dir;
 	t_dir *next;	
@@ -34,11 +34,18 @@ void 	print_name(t_list *list, void *path)
 	next = (t_dir *)list->next;
 
 
+	// if (!fl)
+	// 	dir = sort(list);
+
+	if (!(fl & FLAG_a) && dir->name[0] != '.')
+	{
+		ft_putstr(dir->name);
+		ft_putchar('\t');
+	}
 	if (next == NULL)
 		ft_putchar('\n');
 
-	ft_putstr(dir->name);
-	ft_putchar('\t');
+
 
 }
 
@@ -82,6 +89,7 @@ void	ft_ls(char *d_path, unsigned char flags)
 	}
 	ft_MergeSort(&content,  choose_compare(flags));
 	
+	content->flags = flags;
 	ft_lstiter_data(content, d_path, choose_print(flags));
 
 	recurse_data.path = d_path;

@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 14:02:59 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 19:46:58 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/18 21:47:09 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_iterdata_func choose_print(unsigned char flags)
 		return long_print_no_owner;
 	else
 		return print_name;
+
 }
 
