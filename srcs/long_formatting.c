@@ -6,7 +6,7 @@
 /*   By: dodendaa <dodendaa@student.wethinkcode.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 14:13:46 by dodendaa          #+#    #+#             */
-/*   Updated: 2020/05/18 21:33:54 by dodendaa         ###   ########.fr       */
+/*   Updated: 2020/05/19 13:04:05 by dodendaa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,7 @@ void	long_print_no_owner(t_list *lst, void *path, unsigned char fl)
 	{
 		lst = lst->next;
 	}
-	// else if ((fl & FLAG_a) && the_things->name[0] == '.')
-	// {
-	// 	// ft_putstr(the_things->name);
-	// 	// ft_putchar('\t');
-	// }
 
-
-	// if (lst->next == NULL)
-	// 	ft_putchar('\n'); 
 
 
 	if ((S_ISLNK(the_things->mode)))
@@ -59,10 +51,14 @@ void	long_print_no_owner(t_list *lst, void *path, unsigned char fl)
 void	long_print_format(t_list *lst, void *path, unsigned char fl)
 {
     t_dir *the_things;
+	t_dir *next;
+
+	next = (t_dir *)lst->next;
 
     the_things = (t_dir *)lst->content;
 
-	if ((!(fl & FLAG_a) && the_things->name[0] == '.' ))
+
+	if ((!(fl & FLAG_a) && the_things->name[0] == '.' && next))
 		the_things = lst->next->content;
 
 
